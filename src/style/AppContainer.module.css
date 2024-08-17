@@ -1,0 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.AppContainer {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.functionContainer{
+  box-sizing: border-box;
+  margin: 0px 20%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content:stretch;
+}
