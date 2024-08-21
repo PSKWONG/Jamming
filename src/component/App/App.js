@@ -29,9 +29,12 @@ function App() {
         r.style.setProperty('--appContainerState', 'none');
     }
 
-  // Song List Display 
-
+  // Searched Song List to display 
   const [displayList, setDisplayList]  = useState([])
+
+  // User Defined PlayList 
+  const [playlistName, setPlaylistName] = useState("New Playlist");
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
 
   //"Searching Function" for the App =============================================================
