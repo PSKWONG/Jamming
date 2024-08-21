@@ -3,10 +3,24 @@ import songDetailStyles from './SongDetail.module.css'
 
 export function SongDetailContainer (props){
 
+    function handleButtonAction (){
+        if(props.button === "+"){
+            props.setAction('Add')
+        }else{
+            props.setAction('Remove')
+        }
+        props.setpendingTrackInfo({
+            album: props.trackInfo.album,
+            artist: props.trackInfo.artist,
+            trackID: props.trackInfo.trackID,
+            trackName: props.trackInfo.trackName,
+            trackURI: props.trackInfo.trackURI
+        })
+    }
 
     return (
         <div className={songDetailStyles.songDetailContailer} key={props.trackInfo.id}>
-            <div className={songDetailStyles.asctionButton}  >
+            <div className={songDetailStyles.asctionButton} onClick={handleButtonAction} >
                 <div className={songDetailStyles.sign}>{props.button}</div>
             </div>
             <div className={songDetailStyles.singer} ></div>

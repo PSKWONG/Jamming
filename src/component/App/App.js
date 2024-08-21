@@ -9,6 +9,7 @@ import { AuthenComponent } from '../Authentication/authenComponent';
 import { HeaderComponent } from '../Header/headerComponent';
 import { SearchingContainer } from '../Searching/SearchingComponent';
 import { DisplayContainer } from '../DisplayContainer/DisplayContainer';
+import { UsertDisplayContainer } from '../UserListContainer/userDisplayListContainer';
 
 
 
@@ -29,12 +30,42 @@ function App() {
         r.style.setProperty('--appContainerState', 'none');
     }
 
-  // Searched Song List to display 
+  //Song List to display ========================================================
   const [displayList, setDisplayList]  = useState([])
 
-  // User Defined PlayList 
+  // User Defined PlayList ========================================================
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [actionOnList , setAction] = useState(''); 
+  const [pendingTrackInfo, setpendingTrackInfo] = useState('')
+
+  // Action taken after pressing the + / - button 
+  useEffect(()=>{
+
+    // Add Track into user track list 
+    if(actionOnList === 'Add'){
+
+      //Check repeating check 
+      let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID)
+      if(RepeatedChecking.length == 0 ){
+        console.log('Adding Track is triggered')
+        setPlaylistTracks(
+          (pre) => ([pendingTrackInfo, ...pre])
+        )
+      }else {
+        alert ('Track already Exist in your playlist')
+      }
+
+    }
+
+
+
+    console.log(pendingTrackInfo)
+  }, [pendingTrackInfo])
+
+
+
+
 
 
   //"Searching Function" for the App =============================================================
@@ -50,10 +81,6 @@ function App() {
       }
     )
   }
-  
-
-
-
 
   return (
     <div className={AppStyle.AppContainer}>
@@ -63,7 +90,8 @@ function App() {
       </div>
       <div className={AppStyle.functionContainer}>
         <SearchingContainer inputValue={inputValue} setInputValue={setInputValue} handleSearchingBtn={handleSearchingBtn}/>
-        <DisplayContainer displayList={displayList} />
+        <DisplayContainer displayList={displayList} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
+        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo}/>
 
       </div>
     </div>
