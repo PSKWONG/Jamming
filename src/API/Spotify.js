@@ -28,9 +28,6 @@ export function extractAccessToken (){
 
 export function getAccessToken() {
 
-  const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
-  const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
-
   //Parameter to pass for authentication
   var scope = 'playlist-modify-public playlist-modify-private';
   var url = 'https://accounts.spotify.com/authorize';

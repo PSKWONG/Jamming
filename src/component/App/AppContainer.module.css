@@ -3,18 +3,28 @@
   padding: 0px;
 }
 
+:root{
+  --appContainerState : flex ;
+  --authenticatorState : block ;
+}
+
 .AppContainer {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-color: red;
+  
 }
 
 .functionContainer{
   box-sizing: border-box;
   margin: 0px 20%;
-  display: flex;
   flex-wrap: wrap;
   align-content:stretch;
+  display: var(--appContainerState);
+}
+
+.AuthenticatorContainer {
+  display: var(--authenticatorState) ;
 }

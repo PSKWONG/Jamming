@@ -6,17 +6,6 @@ import { checkAccessToken } from '../../API/Spotify';
 
 export function AuthenComponent (props){
 
-    var r = document.querySelector(':root');
-
-    if (checkAccessToken()){
-        //Set the display property of the container 
-        r.style.setProperty('--authenticatorState', 'none');
-        console.log('Authentication status is disabled')
-    }else{
-        r.style.setProperty('--authenticatorState', 'block');
-        console.log('Authentication status is enable')
-    }
-
     
 
     function handleOnClick () {
