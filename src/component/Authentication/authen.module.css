@@ -1,0 +1,38 @@
+:root{
+    --authenticatorState : block ;
+}
+
+.authenContainer {
+    background-color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding: 25px;
+    border-radius: 25px;
+    max-height: 30dvh;
+    margin: 50px ;
+    display: var(--authenticatorState);
+}
+
+.authenTitle{
+    font-size: 3em;
+    color: rgb(51, 51, 51);
+    font-weight: 900;
+    text-align: center;
+}
+
+.authenbutton {
+    display: block;
+    width: 250px;
+    background-color: whitesmoke;
+    color: black;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.authenbutton:hover{
+    background-color: grey;
+    color: white;
+}
