@@ -1,13 +1,27 @@
+import React, {useEffect, useState } from 'react'; 
+
 import './App.css';
 import AppStyle from './AppContainer.module.css'; 
+
 import { HeaderComponent } from '../Header/headerComponent';
+import { SearchingContainer } from '../Searching/SearchingComponent';
 
 
 
 function App() {
+
+  //Define the "Searching Value" for the App 
+  const [inputValue, setInputValue] = useState('Input name of your favourite track /artist /album');
+
+
+
   return (
     <div className={AppStyle.AppContainer}>
-      <HeaderComponent></HeaderComponent>
+      <HeaderComponent />
+      <div className={AppStyle.functionContainer}>
+          <SearchingContainer inputValue={inputValue} setInputValue={setInputValue} />
+
+      </div>
     </div>
   );
 }
