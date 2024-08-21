@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import AppStyle from './AppContainer.module.css';
-import AppStyle from './AppContainer.module.css';
 
-import { getAccessToken, extractAccessToken , checkAccessToken} from '../../API/Spotify';
+import { getAccessToken, extractAccessToken , checkAccessToken, getSearchresult} from '../../API/Spotify';
 
 import { AuthenComponent } from '../Authentication/authenComponent';
 import { HeaderComponent } from '../Header/headerComponent';
 import { SearchingContainer } from '../Searching/SearchingComponent';
+import { DisplayContainer } from '../DisplayContainer/DisplayContainer';
 
 
 
@@ -30,7 +29,9 @@ function App() {
         r.style.setProperty('--appContainerState', 'none');
     }
 
-    
+  // Song List Display 
+
+  const [displayList, setDisplayList]  = useState([])
 
 
   //"Searching Function" for the App =============================================================
@@ -39,6 +40,12 @@ function App() {
   function handleSearchingBtn(event){
     event.preventDefault()
     //console.log('Searching button is triggered')
+    getSearchresult(inputValue)
+    .then(
+      (resp) => {
+        setDisplayList(resp);
+      }
+    )
   }
   
 
@@ -53,6 +60,7 @@ function App() {
       </div>
       <div className={AppStyle.functionContainer}>
         <SearchingContainer inputValue={inputValue} setInputValue={setInputValue} handleSearchingBtn={handleSearchingBtn}/>
+        <DisplayContainer displayList={displayList} />
 
       </div>
     </div>
