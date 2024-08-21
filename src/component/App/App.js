@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
+import AppStyle from './AppContainer.module.css';
 import AppStyle from './AppContainer.module.css';
 
 import { getAccessToken, extractAccessToken , checkAccessToken} from '../../API/Spotify';
