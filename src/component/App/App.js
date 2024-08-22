@@ -17,8 +17,30 @@ function App() {
 
   extractAccessToken();
 
-  //Control the display of Components ========================================================
   var r = document.querySelector(':root');
+  //Control the background of the APP ========================================================
+  useEffect(() => {
+    let randomNum = Math.floor(Math.random() * 4)
+    console.log(randomNum)
+    switch (randomNum) {
+      case 0:
+        console.log('option 0 ')
+        r.style.setProperty('--backgroundImg', 'url(./images/pink_background.jpg)');
+        break;
+      case 1:
+        r.style.setProperty('--backgroundImg', 'url(./images/green_background.webp)');
+        break;
+      case 2:
+        r.style.setProperty('--backgroundImg', 'url(./images/red_background.jpg)');
+        break;
+      case 3:
+        r.style.setProperty('--backgroundImg', 'url(./images/yellow_background.webp)');
+        break;
+    }
+
+  }, [])
+
+  //Control the display of Components ========================================================
 
   if (checkAccessToken()) {
     //Set the display property of the container 
@@ -42,7 +64,7 @@ function App() {
   // Action taken after pressing the + / - button 
   useEffect(() => {
 
-    
+
     if (actionOnList === 'Add') { // Add Track into user track list 
 
       //Check repeating check 
@@ -57,22 +79,22 @@ function App() {
 
     } else if (actionOnList === "Remove") {// Remove Track from user track list 
       let RenewedUserPlayList = playlistTracks.filter((track) => track.trackID !== pendingTrackInfo.trackID)
-      setPlaylistTracks (RenewedUserPlayList)
+      setPlaylistTracks(RenewedUserPlayList)
     }
 
   }, [pendingTrackInfo])
 
- // Convert the userplaylist into a URI list 
-  const [ uriList , setURIList] = useState( [] )
-  useEffect(()=>{
+  // Convert the userplaylist into a URI list 
+  const [uriList, setURIList] = useState([])
+  useEffect(() => {
 
-    const conversionList = playlistTracks.map((trackinfo)=>{
+    const conversionList = playlistTracks.map((trackinfo) => {
       return trackinfo.trackURI
     })
 
     setURIList(conversionList)
 
-  },[playlistTracks])
+  }, [playlistTracks])
 
 
 
@@ -91,18 +113,17 @@ function App() {
   }
 
   //Export playlist to Spotify =============================================================
-  function handleExportBtn (event){
+  function handleExportBtn(event) {
     event.preventDefault();
-    if(uriList.length !==0){
+    if (uriList.length !== 0) {
       exportPlaylist(playlistName, uriList)
       alert('Tracks are successfully added')
       setPlaylistTracks([]);
       setPlaylistName('New Playlist')
 
-    }else{
+    } else {
       alert('Please add track to the list')
     }
-    
 
   }
 
@@ -121,8 +142,8 @@ function App() {
       <div className={AppStyle.functionContainer}>
         <SearchingContainer inputValue={inputValue} setInputValue={setInputValue} handleSearchingBtn={handleSearchingBtn} />
         <DisplayContainer displayList={displayList} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
-        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks} 
-        setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />
+        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks}
+          setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />
 
       </div>
     </div>

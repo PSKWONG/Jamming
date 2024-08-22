@@ -6,6 +6,7 @@
 :root{
   --appContainerState : flex ;
   --authenticatorState : block ;
+  --backgroundImg : url(./images/pink_background.jpg)
 }
 
 .AppContainer {
@@ -14,6 +15,7 @@
   background-position: center;
   background-size: cover;
   background-color: red;
+  background-image: var(--backgroundImg);
   
 }
 
