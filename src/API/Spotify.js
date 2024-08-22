@@ -1,5 +1,5 @@
-import { disableAuthenComponent } from "../component/Authentication/authenComponent";
 
+// Access Token =======================================================================
 const clientId = 'c7441c598089429180fc19029ec4f0ec'
 const redirectUri = 'http://localhost:3000/';
 var accessToken;
@@ -28,23 +28,25 @@ export function extractAccessToken() {
 
 export function getAccessToken() {
 
-  //Parameter to pass for authentication
-  var scope = 'playlist-modify-public playlist-modify-private';
-  var url = 'https://accounts.spotify.com/authorize';
-  url += '?response_type=token';
-  url += '&client_id=' + encodeURIComponent(clientId);
-  url += '&scope=' + encodeURIComponent(scope);
-  url += '&redirect_uri=' + encodeURIComponent(redirectUri);
-
   if (accessToken) { // <Senario 1 - If access Token is avaliable > 
     return accessToken;
   } else { // <Senario 2 - If access Token is NOT avaliable > 
+
+    //Parameter to pass for authentication
+    var scope = 'playlist-modify-public playlist-modify-private';
+    var url = 'https://accounts.spotify.com/authorize';
+    url += '?response_type=token';
+    url += '&client_id=' + encodeURIComponent(clientId);
+    url += '&scope=' + encodeURIComponent(scope);
+    url += '&redirect_uri=' + encodeURIComponent(redirectUri);
+
     window.location = url;
     extractAccessToken();
   }
 
 }
 
+// Searching Function  =======================================================================
 export async function getSearchresult(input) {
   //content to send 
 
@@ -91,15 +93,97 @@ export async function getSearchresult(input) {
 
       return trackData
     }
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// Export Play List =======================================================================
+async function getUserID() {
+  const url = "https://api.spotify.com/v1/me"
+
+  //Headers 
+  const profile_AccessToken = await getAccessToken();
+  const headerComponent = {
+    "Authorization": "Bearer " + profile_AccessToken
+  }
+
+  try {
+
+    const response = await fetch(url, {
+      "method": "GET",
+      "headers": headerComponent
+    })
+    const userData = await response.json()
+    return userData.id
+
+  } catch (err) {
+
+    console.log(err)
+
+  }
+
+}
 
 
+export async function exportPlaylist(input, trackList) {
 
+  
+  const userID = await getUserID();
+  const playList_AccessToken = await getAccessToken();
+  var playListID
 
-    return data.tracks.items
+  //Generate a NEW playlist to store the track 
+  const url = `https://api.spotify.com/v1/users/${userID}/playlists`
+  const headerComponent = {
+    "Authorization": "Bearer " + playList_AccessToken,
+    "Content-Type": "application/json"
+  }
+  const bodyContent = JSON.stringify(
+    {
+      "name": `${input}`,
+      "description": "Edward Jamming Programme generated playlist",
+      "public": false
+    }
+  )
+
+  try {
+    const response = await fetch(url, {
+      "method": "POST",
+      "headers": headerComponent,
+      "body": bodyContent
+    })
+
+    const playListData = await response.json()
+    playListID = playListData.id
 
   } catch (err) {
     console.log(err)
   }
+
+  //Add Items into the NEW Playlist
+  const addingTrackURL = `https://api.spotify.com/v1/playlists/${playListID}/tracks`
+  const addingTrackBodyCompnent = JSON.stringify(
+    {
+      "uris" : trackList,
+      "position": 0
+    }
+  )
+  try{
+    const addingTrackResponse = fetch(addingTrackURL, {
+      "method" : "POST",
+      "headers" : headerComponent,
+      "body" : addingTrackBodyCompnent
+    })
+
+
+  }catch (err){
+    console.log(err)
+  }
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import AppStyle from './AppContainer.module.css';
 
-import { getAccessToken, extractAccessToken, checkAccessToken, getSearchresult } from '../../API/Spotify';
+import { getAccessToken, extractAccessToken, checkAccessToken, getSearchresult, exportPlaylist } from '../../API/Spotify';
 
 import { AuthenComponent } from '../Authentication/authenComponent';
 import { HeaderComponent } from '../Header/headerComponent';
@@ -48,7 +48,6 @@ function App() {
       //Check repeating check 
       let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID)
       if (RepeatedChecking.length == 0) {
-        console.log('Adding Track is triggered')
         setPlaylistTracks(
           (pre) => ([pendingTrackInfo, ...pre])
         )
@@ -63,7 +62,17 @@ function App() {
 
   }, [pendingTrackInfo])
 
+ // Convert the userplaylist into a URI list 
+  const [ uriList , setURIList] = useState( [] )
+  useEffect(()=>{
 
+    const conversionList = playlistTracks.map((trackinfo)=>{
+      return trackinfo.trackURI
+    })
+
+    setURIList(conversionList)
+
+  },[playlistTracks])
 
 
 
@@ -73,7 +82,6 @@ function App() {
 
   function handleSearchingBtn(event) {
     event.preventDefault()
-    //console.log('Searching button is triggered')
     getSearchresult(inputValue)
       .then(
         (resp) => {
@@ -81,6 +89,28 @@ function App() {
         }
       )
   }
+
+  //Export playlist to Spotify =============================================================
+  function handleExportBtn (event){
+    event.preventDefault();
+    if(uriList.length !==0){
+      exportPlaylist(playlistName, uriList)
+      alert('Tracks are successfully added')
+      setPlaylistTracks([]);
+      setPlaylistName('New Playlist')
+
+    }else{
+      alert('Please add track to the list')
+    }
+    
+
+  }
+
+
+
+
+
+
 
   return (
     <div className={AppStyle.AppContainer}>
@@ -91,7 +121,8 @@ function App() {
       <div className={AppStyle.functionContainer}>
         <SearchingContainer inputValue={inputValue} setInputValue={setInputValue} handleSearchingBtn={handleSearchingBtn} />
         <DisplayContainer displayList={displayList} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
-        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
+        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks} 
+        setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />
 
       </div>
     </div>
