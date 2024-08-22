@@ -25,7 +25,7 @@ export function UsertDisplayContainer(props) {
         resultlistItems = props.playlistTracks.map(
             (trackInfo) => {
                 console.log(trackInfo)
-                return <SongDetailContainer trackInfo={trackInfo} button="-" />
+                return <SongDetailContainer trackInfo={trackInfo} setAction={props.setAction} setpendingTrackInfo={props.setpendingTrackInfo} button="-" />
             }
         )
     }
