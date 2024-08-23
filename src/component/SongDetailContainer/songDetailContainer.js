@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import songDetailStyles from './SongDetail.module.css'
 
-export function SongDetailContainer (props){
+export function SongDetailContainer(props) {
 
-    const r = document.querySelector(':root');
-    //Control the appearance of the media player 
-        let videoDisplayStyle 
-        if (props.button === "+"){
-            
-            videoDisplayStyle = {
-                display : 'block'
-            }
-        }else if(props.button === "-"){
-            videoDisplayStyle = {
-                display : 'none'
-            }
+
+
+    let videoDisplayStyle
+    if (props.button === "+" && props.trackInfo.preview) {
+
+        videoDisplayStyle = {
+            display: 'block'
         }
+    } else {
+        videoDisplayStyle = {
+            display: 'none'
+        }
+    }
 
     // Control the Button Action 
-    function handleButtonAction (){
-        if(props.button === "+"){
+    function handleButtonAction() {
+        if (props.button === "+") {
             props.setAction('Add')
-        }else{
+        } else {
             props.setAction('Remove')
         }
         props.setpendingTrackInfo({
@@ -33,7 +33,6 @@ export function SongDetailContainer (props){
         })
     }
 
-
     return (
         <div className={songDetailStyles.songDetailContailer} key={props.trackInfo.id}>
             <div className={songDetailStyles.asctionButton} onClick={handleButtonAction} >
@@ -41,7 +40,7 @@ export function SongDetailContainer (props){
             </div>
             <h3>{props.trackInfo.trackName}</h3>
             <p>by <span className={songDetailStyles.singer}> {props.trackInfo.artist} </span> in  <span className={songDetailStyles.album}>{props.trackInfo.album} </span></p>
-            <video controls={true}  name="media" style = {videoDisplayStyle}><source src={props.trackInfo.preview} type="audio/mpeg" /></video>
+            <video key={props.trackInfo.id} controls={true} name="media" style={videoDisplayStyle} src={props.trackInfo.preview} sourcetype="audio/mpeg"></video>
         </div>
     )
 }
