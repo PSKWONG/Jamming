@@ -1,3 +1,4 @@
+
 .songDetailContailer{
     background-color: rgba(0,0,0,0.75);
     color: white;
@@ -44,5 +45,10 @@
 
 .asctionButton .sign {
     flex-grow: 1;
+}
+
+.songDetailContailer video{
+    margin-top: -80px; 
+ 
 }
 
