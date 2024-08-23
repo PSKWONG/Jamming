@@ -86,7 +86,9 @@ export async function getSearchresult(input) {
             artist: track.artists[0].name,
             trackID: track.id,
             trackName: track.name,
-            trackURI: track.uri
+            trackURI: track.uri,
+            preview : track.preview_url
+            
           }
         }
       )

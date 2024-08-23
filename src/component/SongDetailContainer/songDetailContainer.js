@@ -1,4 +1,4 @@
-import React ,{useEffect, useState} from "react";
+import React from "react";
 import songDetailStyles from './SongDetail.module.css'
 
 export function SongDetailContainer (props){
@@ -33,6 +33,7 @@ export function SongDetailContainer (props){
         })
     }
 
+
     return (
         <div className={songDetailStyles.songDetailContailer} key={props.trackInfo.id}>
             <div className={songDetailStyles.asctionButton} onClick={handleButtonAction} >
@@ -40,7 +41,7 @@ export function SongDetailContainer (props){
             </div>
             <h3>{props.trackInfo.trackName}</h3>
             <p>by <span className={songDetailStyles.singer}> {props.trackInfo.artist} </span> in  <span className={songDetailStyles.album}>{props.trackInfo.album} </span></p>
-            <video controls={true}  name="media" style = {videoDisplayStyle}><source src="https://p.scdn.co/mp3-preview/3e5a8a690f60b80b0cde1de8029cfbd706a3c015?cid=cfe923b2d660439caf2b557b21f31221" type="audio/mpeg" /></video>
+            <video controls={true}  name="media" style = {videoDisplayStyle}><source src={props.trackInfo.preview} type="audio/mpeg" /></video>
         </div>
     )
 }
