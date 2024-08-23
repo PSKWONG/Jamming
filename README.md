@@ -16,3 +16,4 @@ The technology that I implemented in this project as following:
 * Users can search for songs by song title.
 * Users can see information about each song like title, artist, and album for songs they queried
 * Users can export their custom playlist to their personal Spotify account
+* User can preview the Track before adding to the playlist 
