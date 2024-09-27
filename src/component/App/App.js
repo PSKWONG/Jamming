@@ -63,7 +63,7 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [actionOnList, setAction] = useState('');
   const [pendingTrackInfo, setpendingTrackInfo] = useState('')
-  const [alertMsgState, setAlertMsgState] = useState(false)
+  //const [alertMsgState, setAlertMsgState] = useState(false)
 
   // Action taken after pressing the + / - button
   let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID);
@@ -83,7 +83,7 @@ function App() {
         )
       } else {
         //alert('Track already Exist in your playlist')
-        setAlertMsgState(true)
+        //setAlertMsgState(true)
       }
 
     } else if (actionOnList === "Remove") {// Remove Track from user track list 
@@ -92,15 +92,6 @@ function App() {
     }
 
   }, [pendingTrackInfo, actionOnList, RepeatedChecking, RenewedUserPlayList])
-  //Alert Messge 
-  useEffect(() => {
-
-    if(alertMsgState === true){
-      alert('Track already Exist in your playlist')
-    }
-
-    return setAlertMsgState(false)
-  }, [alertMsgState])
 
 
   // Convert the userplaylist into a URI list 
