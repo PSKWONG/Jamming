@@ -1,7 +1,10 @@
 
 // Access Token =======================================================================
 const clientId = 'c7441c598089429180fc19029ec4f0ec'
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://master--emusicjamming.netlify.app/'; 
+  // Deployment : https://master--emusicjamming.netlify.app/
+  // Development : http://localhost:3000/
+
 var accessToken;
 
 export function checkAccessToken() {
