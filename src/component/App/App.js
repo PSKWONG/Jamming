@@ -64,14 +64,18 @@ function App() {
   const [actionOnList, setAction] = useState('');
   const [pendingTrackInfo, setpendingTrackInfo] = useState('')
 
-  // Action taken after pressing the + / - button 
+  // Action taken after pressing the + / - button
+  let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID);
+  let RenewedUserPlayList = playlistTracks.filter((track) => track.trackID !== pendingTrackInfo.trackID)
+
+
   useEffect(() => {
 
 
     if (actionOnList === 'Add') { // Add Track into user track list 
 
       //Check repeating check 
-      let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID)
+      
       if (RepeatedChecking.length === 0) {
         setPlaylistTracks(
           (pre) => ([pendingTrackInfo, ...pre])
@@ -81,11 +85,11 @@ function App() {
       }
 
     } else if (actionOnList === "Remove") {// Remove Track from user track list 
-      let RenewedUserPlayList = playlistTracks.filter((track) => track.trackID !== pendingTrackInfo.trackID)
+      
       setPlaylistTracks(RenewedUserPlayList)
     }
 
-  }, [pendingTrackInfo])
+  }, [pendingTrackInfo,actionOnList ])
 
   // Convert the userplaylist into a URI list 
   const [uriList, setURIList] = useState([])
