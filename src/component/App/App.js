@@ -36,7 +36,7 @@ function App() {
       case 3:
         r.style.setProperty('--backgroundImg', 'url(./images/yellow_background.webp)');
         break;
-      default : 
+      default:
         r.style.setProperty('--backgroundImg', 'url(./images/red_background.jpg)');
         break;
     }
@@ -63,6 +63,7 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [actionOnList, setAction] = useState('');
   const [pendingTrackInfo, setpendingTrackInfo] = useState('')
+  const [alertMsgState, setAlertMsgState] = useState(false)
 
   // Action taken after pressing the + / - button
   let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID);
@@ -75,21 +76,29 @@ function App() {
     if (actionOnList === 'Add') { // Add Track into user track list 
 
       //Check repeating check 
-      
+
       if (RepeatedChecking.length === 0) {
         setPlaylistTracks(
           (pre) => ([pendingTrackInfo, ...pre])
         )
       } else {
-        alert('Track already Exist in your playlist')
+        //alert('Track already Exist in your playlist')
+        setAlertMsgState(true)
       }
 
     } else if (actionOnList === "Remove") {// Remove Track from user track list 
-      
+
       setPlaylistTracks(RenewedUserPlayList)
     }
 
   }, [pendingTrackInfo, actionOnList, RepeatedChecking, RenewedUserPlayList])
+  //Alert Messge 
+  useEffect(() => {
+    alert('Track already Exist in your playlist')
+    
+    return setAlertMsgState(false)
+  }, [alertMsgState])
+
 
   // Convert the userplaylist into a URI list 
   const [uriList, setURIList] = useState([])
