@@ -89,7 +89,7 @@ function App() {
       setPlaylistTracks(RenewedUserPlayList)
     }
 
-  }, [pendingTrackInfo,actionOnList ])
+  }, [pendingTrackInfo, actionOnList, RepeatedChecking, RenewedUserPlayList])
 
   // Convert the userplaylist into a URI list 
   const [uriList, setURIList] = useState([])
