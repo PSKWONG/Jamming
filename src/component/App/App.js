@@ -36,9 +36,12 @@ function App() {
       case 3:
         r.style.setProperty('--backgroundImg', 'url(./images/yellow_background.webp)');
         break;
+      default : 
+        r.style.setProperty('--backgroundImg', 'url(./images/red_background.jpg)');
+        break;
     }
 
-  }, [])
+  }, [r.style])
 
   //Control the display of Components ========================================================
 
@@ -69,7 +72,7 @@ function App() {
 
       //Check repeating check 
       let RepeatedChecking = playlistTracks.filter((track) => track.trackID === pendingTrackInfo.trackID)
-      if (RepeatedChecking.length == 0) {
+      if (RepeatedChecking.length === 0) {
         setPlaylistTracks(
           (pre) => ([pendingTrackInfo, ...pre])
         )

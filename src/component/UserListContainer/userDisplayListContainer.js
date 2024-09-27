@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import userResultStyles from './userDisplayList.module.css'
 import { SongDetailContainer } from '../SongDetailContainer/songDetailContainer';
 

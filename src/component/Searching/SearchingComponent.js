@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react'; 
+
 import styles from './searching.module.css'; 
 
 export function SearchingContainer(props){

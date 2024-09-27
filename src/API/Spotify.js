@@ -76,7 +76,7 @@ export async function getSearchresult(input) {
     let data = await response.json()
     data = data.tracks.items
     //check whether the return result is null 
-    if (data.length == 0) {
+    if (data.length === 0) {
       return [];
     } else {
       let trackData = data.map(
@@ -172,7 +172,7 @@ export async function exportPlaylist(input, trackList) {
     }
   )
   try{
-    const addingTrackResponse = fetch(addingTrackURL, {
+    fetch(addingTrackURL, {
       "method" : "POST",
       "headers" : headerComponent,
       "body" : addingTrackBodyCompnent

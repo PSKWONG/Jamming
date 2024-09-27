@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import songDetailStyles from './SongDetail.module.css'
 
 export function SongDetailContainer(props) {

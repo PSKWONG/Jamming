@@ -1,6 +1,4 @@
-import React, {useState} from 'react';
 import Style from './authen.module.css';
-import { checkAccessToken } from '../../API/Spotify';
 
 
 
