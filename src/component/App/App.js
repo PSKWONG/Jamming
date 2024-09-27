@@ -94,9 +94,11 @@ function App() {
   }, [pendingTrackInfo, actionOnList, RepeatedChecking, RenewedUserPlayList])
   //Alert Messge 
   useEffect(() => {
+
     if(alertMsgState === true){
       alert('Track already Exist in your playlist')
     }
+
     return setAlertMsgState(false)
   }, [alertMsgState])
 
