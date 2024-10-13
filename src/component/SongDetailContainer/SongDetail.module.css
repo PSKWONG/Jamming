@@ -52,3 +52,10 @@
  
 }
 
+@media only screen and (max-width: 480px)  {
+    .songDetailContailer video{
+     width: 50%;
+     line-height: 1em;
+     margin-top: 0px; 
+    }
+  }

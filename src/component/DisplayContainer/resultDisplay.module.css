@@ -1,12 +1,11 @@
 
 .resultDisplayContainer {
     background-color: rgba(107, 105, 105, 0.45);
-    flex-basis: 55%;
+    flex-basis: 100%;
     box-sizing: border-box;
     padding: 10px;
-    max-height: 60dvh;
+    max-height: 50dvh;
     border-radius: 10px;
-    margin-right: 10px;
     height: 70dvh;
     
 }
@@ -21,3 +20,14 @@
     border-radius: 5px;
     align-content: start;
 }
+
+@media only screen and (min-width: 768px)  {
+    .resultDisplayContainer {
+        flex-basis: 55%;
+        box-sizing: border-box;
+        padding: 10px;
+        max-height: 60dvh;
+        height: 70dvh;
+        
+    }
+  }

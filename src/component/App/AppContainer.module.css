@@ -21,12 +21,19 @@
 
 .functionContainer{
   box-sizing: border-box;
-  margin: 0px 20%;
+  margin: 0px 5%;
   flex-wrap: wrap;
   align-content:stretch;
+  justify-content: space-around;
   display: var(--appContainerState);
 }
 
 .AuthenticatorContainer {
   display: var(--authenticatorState) ;
+}
+
+@media only screen and (min-width: 768px)  {
+  .functionContainer{
+    margin: 0px 20%;
+  }
 }
