@@ -19,7 +19,7 @@ function App() {
 
   var r = document.querySelector(':root');
   //Control the background of the APP ========================================================
-  
+  /*
   useEffect(() => {
     let randomNum = Math.floor(Math.random() * 4)
     console.log(randomNum)
@@ -43,7 +43,7 @@ function App() {
     }
 
   }, [r.style])
-
+*/
   //Control the display of Components ========================================================
 
   if (checkAccessToken()) {
