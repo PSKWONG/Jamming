@@ -26,19 +26,19 @@ function App() {
     switch (randomNum) {
       case 0:
         console.log('option 0 ')
-        r.style.setProperty('--backgroundImg', 'url(../../../public/images/pink_background.jpg)');
+        r.style.setProperty('--backgroundImg', 'url(../../../images/pink_background.jpg)');
         break;
       case 1:
-        r.style.setProperty('--backgroundImg', 'url(../../../public/images/green_background.webp)');
+        r.style.setProperty('--backgroundImg', 'url(../../../images/green_background.webp)');
         break;
       case 2:
-        r.style.setProperty('--backgroundImg', 'url(../../../public/images/red_background.jpg)');
+        r.style.setProperty('--backgroundImg', 'url(../../../images/red_background.jpg)');
         break;
       case 3:
-        r.style.setProperty('--backgroundImg', 'url(../../../public/images/yellow_background.webp)');
+        r.style.setProperty('--backgroundImg', 'url(../../../images/yellow_background.webp)');
         break;
       default:
-        r.style.setProperty('--backgroundImg', 'url(../../../public/images/yellow_background.webp)');
+        r.style.setProperty('--backgroundImg', 'url(../../../images/yellow_background.webp)');
         break;
     }
 
