@@ -1,16 +1,14 @@
-
 .userDisplayContainer {
     background-color: rgba(107, 105, 105, 0.45);
-    flex-basis: 35%;
-    box-sizing: border-box;
+    flex-basis: 100%;
     padding: 10px;
     max-height: 60dvh;
     border-radius: 10px;
-    
+    margin-top: 10px;
+
 }
 
 .userListContainer {
-   height: 85%;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -20,7 +18,7 @@
     border-radius: 5px;
 }
 
-.titleInput{
+.titleInput {
     width: 100%;
     margin-bottom: 5px;
     background-color: rgba(107, 105, 105, 0);
@@ -32,24 +30,34 @@
     overflow: hidden;
 }
 
-.titleInput:focus{
+.titleInput:focus {
     color: white;
 }
 
-.exportButton{
-    width: 100%;
-    background-color: rgba(0,0,0,0.85);
+.exportButton {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #148F40;
+    background-color: #1ED760;
     color: white;
     font-size: large;
     text-align: center;
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 480px)  {
+.exportButton:hover {
+    background-color: #0C5727;
+}
+
+
+@media only screen and (min-width: 1100px) {
     .userDisplayContainer {
-        flex-basis: 100%;
-        margin-top: 10px;
-        
+        flex-basis: 35%;
+        padding: 10px;
+        max-height: 60dvh;
+        border-radius: 10px;
+
     }
-  }
+}

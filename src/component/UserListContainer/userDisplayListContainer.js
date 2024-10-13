@@ -42,7 +42,7 @@ export function UsertDisplayContainer(props) {
                     )
                 }
             </div>
-            <input className={userResultStyles.exportButton} type='submit' value="Export to Spotify" onClick={props.handleExportBtn} ></input>
+            <div className={userResultStyles.exportButton}  onClick={props.handleExportBtn} >Export to Spotify</div>
         </div>
     );
 }

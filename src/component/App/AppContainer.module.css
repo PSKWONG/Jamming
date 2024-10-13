@@ -6,7 +6,7 @@
 :root{
   --appContainerState : flex ;
   --authenticatorState : block ;
-  --backgroundImg : url(./images/pink_background.jpg)
+  --backgroundImg : url(../../../public/images/green_background.webp);
 }
 
 .AppContainer {
