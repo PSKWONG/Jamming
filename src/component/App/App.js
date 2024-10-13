@@ -19,6 +19,7 @@ function App() {
 
   var r = document.querySelector(':root');
   //Control the background of the APP ========================================================
+  
   useEffect(() => {
     let randomNum = Math.floor(Math.random() * 4)
     console.log(randomNum)
@@ -72,7 +73,6 @@ function App() {
 
   useEffect(() => {
 
-
     if (actionOnList === 'Add') { // Add Track into user track list 
 
       //Check repeating check 
@@ -91,6 +91,8 @@ function App() {
       setPlaylistTracks(RenewedUserPlayList)
     }
 
+    return setAction('')
+
   }, [pendingTrackInfo, actionOnList, RepeatedChecking, RenewedUserPlayList])
 
 
@@ -98,11 +100,14 @@ function App() {
   const [uriList, setURIList] = useState([])
   useEffect(() => {
 
-    const conversionList = playlistTracks.map((trackinfo) => {
-      return trackinfo.trackURI
-    })
+    if (playlistTracks.length !== 0) {
+      const conversionList = playlistTracks.map((trackinfo) => {
+        return trackinfo.trackURI
+      })
 
-    setURIList(conversionList)
+      setURIList(conversionList)
+    }
+
 
   }, [playlistTracks])
 
@@ -129,7 +134,7 @@ function App() {
       exportPlaylist(playlistName, uriList)
       alert('Tracks are successfully added')
       setPlaylistTracks([]);
-      setPlaylistName('New Playlist')
+      setPlaylistName('New Playlist');
 
     } else {
       alert('Please add track to the list')

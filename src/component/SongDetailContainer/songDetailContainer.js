@@ -1,11 +1,21 @@
 import songDetailStyles from './SongDetail.module.css'
 
 export function SongDetailContainer(props) {
+    try{
+        var {trackInfo} = props.trackDetail; 
+    }catch(error){
+        return <></>
+    }
 
-
+    
+    const {action} = props.trackDetail; 
+    const {setAction, setpendingTrackInfo} =action; 
+    const {button} = props.trackDetail;
+    const {preview, album, artist, trackID, trackName , trackURI , id  } = trackInfo;
 
     let videoDisplayStyle
-    if (props.button === "+" && props.trackInfo.preview) {
+
+    if (button === "+" && preview) {
 
         videoDisplayStyle = {
             display: 'block'
@@ -18,28 +28,28 @@ export function SongDetailContainer(props) {
 
     // Control the Button Action 
     function handleButtonAction() {
-        if (props.button === "+") {
-            props.setAction('Add')
+        if (button === "+") {
+            setAction('Add')
         } else {
-            props.setAction('Remove')
+            setAction('Remove')
         }
-        props.setpendingTrackInfo({
-            album: props.trackInfo.album,
-            artist: props.trackInfo.artist,
-            trackID: props.trackInfo.trackID,
-            trackName: props.trackInfo.trackName,
-            trackURI: props.trackInfo.trackURI
+        setpendingTrackInfo({
+            album,
+            artist,
+            trackID,
+            trackName,
+            trackURI,
         })
     }
 
     return (
-        <div className={songDetailStyles.songDetailContailer} key={props.trackInfo.id}>
+        <div className={songDetailStyles.songDetailContailer} key={id}>
             <div className={songDetailStyles.asctionButton} onClick={handleButtonAction} >
-                <div className={songDetailStyles.sign}>{props.button}</div>
+                <div className={songDetailStyles.sign}>{button}</div>
             </div>
-            <h3>{props.trackInfo.trackName}</h3>
-            <p>by <span className={songDetailStyles.singer}> {props.trackInfo.artist} </span> in  <span className={songDetailStyles.album}>{props.trackInfo.album} </span></p>
-            <video key={props.trackInfo.id} controls={true} name="media" style={videoDisplayStyle} src={props.trackInfo.preview} sourcetype="audio/mpeg"></video>
+            <h3>{trackName}</h3>
+            <p>by <span className={songDetailStyles.singer}> {artist} </span> in  <span className={songDetailStyles.album}>{album} </span></p>
+            <video key={id} controls={true} name="media" style={videoDisplayStyle} src={preview} sourcetype="audio/mpeg"></video>
         </div>
     )
 }
