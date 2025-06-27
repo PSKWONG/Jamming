@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import './App.css';
-import AppStyle from './AppContainer.module.css';
+import '../../style/Page.css';
+import AppStyle from './Page.module.css';
 
 import { getAccessToken, extractAccessToken, checkAccessToken, getSearchresult, exportPlaylist } from '../../API/Spotify';
 
@@ -13,7 +13,7 @@ import { UsertDisplayContainer } from '../UserListContainer/userDisplayListConta
 
 
 
-function App() {
+function Page() {
 
   extractAccessToken();
 
@@ -165,4 +165,4 @@ function App() {
   );
 }
 
-export default App;
+export default Page;
