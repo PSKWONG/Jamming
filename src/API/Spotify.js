@@ -1,11 +1,52 @@
 
 // Access Token =======================================================================
-const clientId = 'c7441c598089429180fc19029ec4f0ec'
-const redirectUri = 'https://emusicjamming.netlify.app/'; 
-  // Deployment : https://emusicjamming.netlify.app/
-  // Development : http://localhost:3000/
+//Information to access the Spotify API 
+const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID; 
+const clientSecret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET; 
+const redirectUri = process.env.REACT_APP_ENVIRONMENT === "development"? "http://localhost:3000" : "https://emusicjamming.netlify.app/";
 
-var accessToken;
+// Variable to store the access token
+var accessToken = localStorage.getItem('accessToken') || null;
+
+//Function to get the access token from Spotify API
+export async function getAccessTokenFromSpotify(type = 'client_credentials') {
+
+  if (accessToken) {
+    return accessToken;
+  }
+  // If access token is not available, we need to request a new one
+  if (type === 'client_credentials') {
+    await getClientCredentialsAccessToken();
+  }
+
+  console.log('Access Token:', accessToken);
+
+}
+
+//Function get Clinet Credentials Access Token
+const getClientCredentialsAccessToken = async () => {
+  let authParameters = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
+  }
+
+  try {
+    const response = await fetch('https://accounts.spotify.com/api/token', authParameters);
+    const data = await response.json();
+    accessToken = data.access_token;
+    localStorage.setItem('accessToken', accessToken);
+  } catch (error) {
+    console.error('Error fetching access token:', error);
+  }
+}
+
+
+
+
+
 
 export function checkAccessToken() {
   if (accessToken) {

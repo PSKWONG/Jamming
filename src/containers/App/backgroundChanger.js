@@ -35,8 +35,6 @@ const useSetPageBackground = ()=>{
         //Set the CSS variable for the background image
         document.documentElement.style.setProperty('--backgroundImg', `url(${background})`);
 
-        console.log(`Background set to: ${background}`); // Log the background image being set
-
     },[background]);
 
 }
