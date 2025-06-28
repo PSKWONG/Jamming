@@ -1,27 +1,33 @@
 import React from 'react';
+import styles from './system.module.css';
 
 
 function SystemMessage(props) {
 
     let displayContent; 
 
-    const {isPublicAccessToken, isPrivateAccessToken} = props;
+    const {isPublicAccessToken} = props.accessToken;
+
+    //let isPublicAccessToken = null // Testing purpose
 
     if(isPublicAccessToken === null){
-        displayContent = "Loading...";
+        displayContent = 
+            <div className = {`${styles.messageContainer} ${styles.loadingMessage}`}>
+                <span>Loading...</span>
+            </div>;
     }else if(isPublicAccessToken === false){
-        displayContent = "Failed to retrieve public access token.";
+        displayContent = 
+        <div className = {`${styles.messageContainer} ${styles.errorMessage}`}>
+            <span>Failed to retrieve Spotify Services. Please try again later.</span>
+        </div>;
     }else{
-        displayContent = "Public access token retrieved successfully.";
+        displayContent = <></>;
     }
 
-    
-
-
     return(
-        <div>
-            <span>{message}</span>
-        </div>
+        <>
+        {displayContent}
+        </>
     )
 }
 

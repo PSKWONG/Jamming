@@ -10,12 +10,14 @@ import useGetAccessToken from './getAccessToken';
 const AppContainer = () => {
     //Use the custom hook to manage the state of the page
     useSetPageBackground();
-    //Use the custom hook to get the access token
-    useGetAccessToken(); 
+    //Check the state of the access token
+    const { isPublicAccessToken, isPrivateAccessToken } = useGetAccessToken();
 
   
 
-  return <PageWrapper />;
+  return <PageWrapper 
+    accessToken = {{ isPublicAccessToken, isPrivateAccessToken }}
+  />;
 }   
 
 //Export the AppContainer component

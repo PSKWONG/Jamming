@@ -27,6 +27,11 @@ const useGetAccessToken = ()=>{
         fetchPublicAccessToken();
     }, []);
 
+    return {
+        isPublicAccessToken,
+        isPrivateAccessToken
+    };
+
 }
 
 export default useGetAccessToken;

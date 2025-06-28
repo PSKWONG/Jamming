@@ -10,10 +10,11 @@ import { HeaderComponent } from '../Header/headerComponent';
 import { SearchingContainer } from '../Searching/SearchingComponent';
 import { DisplayContainer } from '../DisplayContainer/DisplayContainer';
 import { UsertDisplayContainer } from '../UserListContainer/userDisplayListContainer';
+import SystemMessage from '../systemMessage/SystemMessage';
 
 
 
-function Page() {
+function Page(props) {
 
   extractAccessToken();
 
@@ -152,6 +153,7 @@ function Page() {
     <div className={AppStyle.AppContainer}>
       <HeaderComponent />
       <div className = {AppStyle.ContentContainer}>
+        <SystemMessage accessToken = {props.accessToken} />
         <div className={AppStyle.AuthenticatorContainer}>
         <AuthenComponent getAccessToken={getAccessToken} />
       </div>

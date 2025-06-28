@@ -30,7 +30,8 @@
   align-items: center;
   justify-content: center;
   min-height: var(--contentContainerHeight);
-  width: 100%;
+  width: 80vw;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
