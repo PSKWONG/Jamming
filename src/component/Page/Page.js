@@ -151,7 +151,8 @@ function Page() {
   return (
     <div className={AppStyle.AppContainer}>
       <HeaderComponent />
-      <div className={AppStyle.AuthenticatorContainer}>
+      <div className = {AppStyle.ContentContainer}>
+        <div className={AppStyle.AuthenticatorContainer}>
         <AuthenComponent getAccessToken={getAccessToken} />
       </div>
       <div className={AppStyle.functionContainer}>
@@ -159,6 +160,8 @@ function Page() {
         <DisplayContainer displayList={displayList} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
         <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks}
           setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />
+
+      </div>
 
       </div>
     </div>

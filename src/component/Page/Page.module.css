@@ -3,12 +3,17 @@
   padding: 0px;
 }
 
+
+
 :root{
   --appContainerState : flex ;
   --authenticatorState : block ;
   --backgroundImg: url(../../../public/images/yellow_background.webp);
+  /* Header Variable can be found in Header.module.css */  
+  --contentContainerHeight: calc(100vh - var(--headerHeight));
 }
 
+/* ---------------- App Container ---------------- */
 .AppContainer {
   min-height: 100vh;
   background-repeat: no-repeat;
@@ -16,9 +21,20 @@
   background-size: cover;
   background-color: red;
   background-image: var(--backgroundImg);
-
-  
 }
+
+/* ---------------- Content Container ---------------- */
+.ContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--contentContainerHeight);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
 
 .functionContainer{
   box-sizing: border-box;

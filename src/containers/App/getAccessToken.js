@@ -3,8 +3,8 @@ import {getPublicAccessToken} from '../../API/spotifyAPI';
 
 const useGetAccessToken = ()=>{
 
-    const [isPublicAccessToken, setIsPublicAccessToken] = useState(false);
-    const [isPrivateAccessToken, setIsPrivateAccessToken] = useState(false);
+    const [isPublicAccessToken, setIsPublicAccessToken] = useState(null);
+    const [isPrivateAccessToken, setIsPrivateAccessToken] = useState(null);
 
     // Function to get the access token from Spotify API
     useEffect(()=>{

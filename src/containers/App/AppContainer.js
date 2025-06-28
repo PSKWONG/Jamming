@@ -10,7 +10,7 @@ import useGetAccessToken from './getAccessToken';
 const AppContainer = () => {
     //Use the custom hook to manage the state of the page
     useSetPageBackground();
-
+    //Use the custom hook to get the access token
     useGetAccessToken(); 
 
   
