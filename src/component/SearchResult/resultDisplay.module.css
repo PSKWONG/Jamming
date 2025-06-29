@@ -18,12 +18,16 @@
 
 .resultListContainer {
     height: calc(100% - 50px);
-    display: flex;
-    flex-wrap: wrap;
     width: 100%;
     overflow-y: auto;
-    align-items: start;
     border-radius: 5px;
+}
+
+.resultListContainer{
+    display: flex;
+    flex-flow:row; 
+    flex-wrap:wrap;
+    gap: 5px;
     align-content: start;
 }
 

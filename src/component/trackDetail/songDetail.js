@@ -8,7 +8,17 @@ export function SongDetail(props) {
     const {album,artist, trackName, preview } = trackDetail; 
 
     //Icon of button 
-    const icon = action[0] ==="add"? "+" : "-"; 
+    const btnIcon = action[0] ==="add"? "+" : "-"; 
+    //Action for button 
+    const btnAction = action[1]; 
+
+    //Conditional Content for preview 
+    let previewContent; 
+    if( preview != null){
+        previewContent = <video key={id} controls={true} name="media" src={preview} sourcetype="audio/mpeg"></video>
+    }else{
+        previewContent = <></>
+    }
 
 /*
     try{
@@ -52,12 +62,15 @@ export function SongDetail(props) {
 
     */
     return (
-        <div className={styles.songDetailContailer} key={id}>
-            <div className={styles.asctionButton} >
-                <div className={styles.sign}> {icon} </div>
+        <div className={styles.songDetailWrapper} key={id}>
+            <div className = {styles.songDetailContailer}>
+                <h3>{trackName}</h3>
+                <p>by <span className={styles.singer}> {artist} </span> in  <span className={styles.album}>{album} </span></p>
+                {previewContent}
             </div>
-            <h3>{trackName}</h3>
-            <p>by <span className={styles.singer}> {artist} </span> in  <span className={styles.album}>{album} </span></p>
+            <div className={styles.actionButton} onClick={btnAction} >
+                <div className={styles.sign}> {btnIcon} </div>
+            </div>
         </div>
     )
 }

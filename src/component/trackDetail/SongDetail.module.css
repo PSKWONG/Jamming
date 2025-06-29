@@ -1,18 +1,31 @@
-
-.songDetailContailer{
+/* songDetailWrapper */
+.songDetailWrapper{
     background-color: rgba(0,0,0,0.75);
     color: white;
-    flex-basis: 100%;
-    box-sizing: border-box;
-    flex-grow: 1;
+    flex-basis: 95%;
+    flex-grow: 1; 
+    box-sizing:border-box; 
     padding: 10px;
-    padding-right:  50px;
     border-radius: 10px;
     border: 1px solid grey;
-    position: relative;
-    margin-bottom: 5px;
-
+    /*position: relative;*/
+    min-height: 60px;
 }
+
+.songDetailWrapper{
+    display: flex; 
+    flex-wrap:wrap; 
+    flex-direction:row; 
+    align-content:stretch;
+    gap:10px;
+}
+
+/* songDetailContailer */
+.songDetailContailer{
+    flex-basis:100px;
+    flex-grow:1;
+}
+
 .songDetailContailer h3{
     border-bottom: dotted 1px grey;
 }
@@ -22,28 +35,30 @@
     font-weight: 200;
 }
 
-.asctionButton {
+/* songDetailContailer */
+
+.actionButton {
     cursor: pointer;
-    display: flex;
-    width: 20px;
-    height: 80%;
-    position: absolute;
-    right: 10px;
-    top:10px;
+    flex-basis:20px;
     border: 1px dotted grey;
     border-radius: 5px;
     text-align: center;
-    align-items: center;
     background-color: rgba(0,0,0,0.75);
 }
 
-.asctionButton:hover {
+.actionButton{
+    display: flex;
+    align-items: center;
+    align-content:center;
+}
+
+.actionButton:hover {
     color: black;
     background-color: rgba(228, 228, 228, 0.75);
     font-size: 800;
 }
 
-.asctionButton .sign {
+.actionButton .sign {
     flex-grow: 1;
 }
 
