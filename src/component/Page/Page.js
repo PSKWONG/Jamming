@@ -6,9 +6,9 @@ import AppStyle from './Page.module.css';
 import { getAccessToken, extractAccessToken, checkAccessToken, getSearchresult, exportPlaylist } from '../../API/Spotify';
 
 import { AuthenComponent } from '../Authentication/authenComponent';
-import { HeaderComponent } from '../Header/headerComponent';
-import { SearchingContainer } from '../Searching/SearchingComponent';
-import { SearchDisplay } from '../SearchResult/searchResult';
+import { HeaderComponent } from '../header/HeaderComponent';
+import { SearchingContainer } from '../searching/SearchingComponent';
+import { SearchDisplay } from '../searching/SearchResult'
 import { UsertDisplayContainer } from '../UserListContainer/userDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
 

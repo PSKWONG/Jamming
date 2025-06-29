@@ -1,5 +1,5 @@
 import userResultStyles from './userDisplayList.module.css'
-import { SongDetail } from '../trackDetail/songDetail';
+import { SongDetail } from '../trackDetail/SongDetail';
 
 export function UsertDisplayContainer(props) {
 

@@ -1,7 +1,7 @@
 import {React} from 'react';
 
 //Import Components
-import PageWrapper from '../../component/Page/Page';
+import PageWrapper from '../../component/page/Page';
 import useSetPageBackground from './backgroundChanger';
 import useGetAccessToken from './getAccessToken';
 import { useGetSearchingResult } from '../searching/getSearchingResult';
