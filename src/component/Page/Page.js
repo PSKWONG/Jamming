@@ -16,6 +16,10 @@ import SystemMessage from '../systemMessage/SystemMessage';
 
 function Page(props) {
 
+  //Variable to control components
+  const {isPublicAccessToken} = props.accessToken;
+
+  //Get the private Access Token from the URL
   extractAccessToken();
 
   var r = document.querySelector(':root');
@@ -114,7 +118,7 @@ function Page(props) {
 
 
 
-
+  /* Function is moved to the Container 
   //"Searching Function" for the App =============================================================
   const [inputValue, setInputValue] = useState('Input name of your favourite track /artist /album');
 
@@ -127,6 +131,7 @@ function Page(props) {
         }
       )
   }
+    */ 
 
   //Export playlist to Spotify =============================================================
   function handleExportBtn(event) {
@@ -154,11 +159,13 @@ function Page(props) {
       <HeaderComponent />
       <div className = {AppStyle.ContentContainer}>
         <SystemMessage accessToken = {props.accessToken} />
+        {isPublicAccessToken && <SearchingContainer searchingControl = {props.searchingControl} />}
+
         <div className={AppStyle.AuthenticatorContainer}>
         <AuthenComponent getAccessToken={getAccessToken} />
       </div>
       <div className={AppStyle.functionContainer}>
-        <SearchingContainer inputValue={inputValue} setInputValue={setInputValue} handleSearchingBtn={handleSearchingBtn} />
+        
         <DisplayContainer displayList={displayList} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
         <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks}
           setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />

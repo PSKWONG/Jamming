@@ -1,0 +1,56 @@
+import {useState, useEffect} from 'react';
+import {getSearchResult} from '../../API/spotifyAPI';
+
+
+
+const useGetSearchingResult = ()=>{
+
+    const [inputValue, setInputValue] = useState("Input HERE");
+    const [searchResult, setSearchResult] = useState([]);
+
+    //Handle the input box when user types in the input box
+    const handleSearchValue = (event) => {
+        setInputValue(event.target.value);
+    }
+
+    //Reset the input box when user clicks on the input box
+    const resetSearchValue = () => {
+        setInputValue('');
+    }
+
+
+    //Handle the searching event when button is clicked 
+    const handleSearchingBtn = async(event) => {
+        event.preventDefault();
+        try {
+            const searchResult = await getSearchResult(inputValue);
+            setSearchResult(searchResult);
+        } catch (error) {
+            console.error("Error fetching search results:", error);
+            throw error;
+        }
+    }
+
+    //Function Checking 
+    useEffect(() => {
+        console.log("Search Result Updated:", searchResult);
+    }, [searchResult]);
+
+
+
+    //Searching Result and Control Data to be exported
+    //searchResult is the data that will be used to display the search result
+    //searchingControl is the control data that will be used to handle the searching event
+    const searchingControl = [
+        inputValue,
+        handleSearchValue,
+        handleSearchingBtn,
+        resetSearchValue
+    ];
+
+    return {searchResult, searchingControl};
+
+}
+
+//Export Searching Control 
+export { useGetSearchingResult };

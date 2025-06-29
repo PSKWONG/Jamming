@@ -4,6 +4,7 @@ import {React} from 'react';
 import PageWrapper from '../../component/Page/Page';
 import useSetPageBackground from './backgroundChanger';
 import useGetAccessToken from './getAccessToken';
+import { useGetSearchingResult } from '../Searching/getSearchingResult';
 
 
 //AppContainer is the main container of the App
@@ -12,11 +13,16 @@ const AppContainer = () => {
     useSetPageBackground();
     //Check the state of the access token
     const { isPublicAccessToken, isPrivateAccessToken } = useGetAccessToken();
+    //Searching Function 
+    const { searchResult, searchingControl } = useGetSearchingResult();
+    
 
   
 
   return <PageWrapper 
     accessToken = {{ isPublicAccessToken, isPrivateAccessToken }}
+    searchResult = {searchResult}
+    searchingControl = {searchingControl}
   />;
 }   
 

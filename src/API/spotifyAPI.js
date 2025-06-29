@@ -19,8 +19,6 @@ const checkAccessToken = () => {
 //Function to get public access token
 const getPublicAccessToken = async () => {
 
-    
-
     if (publicAccessToken !== null){
         return publicAccessToken;
     } else {
@@ -50,5 +48,38 @@ const getPublicAccessToken = async () => {
     }
 }
 
+// Searching Function  =======================================================================
+const getSearchResult = async(inputValue)=>{
+    //Config Searching API
+    let searchURL = 'https://api.spotify.com/v1/search?';
+    const searchingString = `q=${inputValue}`; 
+    const type = '&type=album%2Ctrack%2Cartist'
+    const limit = 20
+    const offSet = 0
+
+    searchURL += searchingString + type + `&limit=${limit}&offset=${offSet}`;
+
+    //Headers 
+    const search_AccessToken = await getPublicAccessToken();
+    const headerComponent = {
+    "Authorization": "Bearer " + search_AccessToken
+    }
+
+    //Get Result from Spotify API
+    try{
+        const response = await axios.get(searchURL, { headers: headerComponent });
+        const tracks = response.data.tracks.items; //Get the data from the response
+
+        return tracks;
+        
+    }catch (error) {
+        console.error("Error fetching search results:", error);
+        throw error;
+    }
+
+}
+
+
+
 //Export the functions
-export { getPublicAccessToken, checkAccessToken };
+export { getPublicAccessToken, checkAccessToken, getSearchResult };

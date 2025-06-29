@@ -26,9 +26,11 @@
 /* ---------------- Content Container ---------------- */
 .ContentContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+
+
   min-height: var(--contentContainerHeight);
   width: 80vw;
   margin: 0 auto;

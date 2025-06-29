@@ -3,24 +3,18 @@ import styles from './searching.module.css';
 
 export function SearchingContainer(props){
 
-    //Handle the Value of textbox 
-    function handleSearchValue(event){
-        props.setInputValue(event.target.value);
-    }
+    //Variable to control the component
+    const [inputValue, handleSearchValue, handleSearchingBtn, resetSearchValue] = props.searchingControl; 
 
-    function resetSearchValue(){
-        props.setInputValue('');
-    }
-
-    
+   
 
     return (
         <div className={styles.serchingContainer} >
             <div className={styles.searchingTitle}> Searching </div>
             <form>
-                <input type="text" className={styles.searchingTextBox} value={props.inputValue} onChange={handleSearchValue} onClick={resetSearchValue}></input>
+                <input type="text" className={styles.searchingTextBox} value={inputValue} onChange={handleSearchValue} onClick={resetSearchValue}></input>
                 <br />
-                <input type='submit' valaue="Search" className={styles.searchingbutton} onClick={props.handleSearchingBtn}></input>
+                <input type='submit' valaue="Search" className={styles.searchingbutton} onClick={handleSearchingBtn}></input>
             </form>
         </div>
 
