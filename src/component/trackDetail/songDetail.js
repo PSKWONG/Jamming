@@ -1,6 +1,16 @@
-import songDetailStyles from './SongDetail.module.css'
+import styles from './SongDetail.module.css'
 
-export function SongDetailContainer(props) {
+export function SongDetail(props) {
+
+    const {id, trackDetail, action} = props; 
+
+    //Exapnd Details of Track
+    const {album,artist, trackName, preview } = trackDetail; 
+
+    //Icon of button 
+    const icon = action[0] ==="add"? "+" : "-"; 
+
+/*
     try{
         var {trackInfo} = props.trackDetail; 
     }catch(error){
@@ -11,7 +21,7 @@ export function SongDetailContainer(props) {
     const {action} = props.trackDetail; 
     const {setAction, setpendingTrackInfo} =action; 
     const {button} = props.trackDetail;
-    const {preview, album, artist, trackID, trackName , trackURI , id  } = trackInfo;
+    //const {preview, album, artist, trackID, trackName , trackURI , id  } = trackInfo;
 
     let videoDisplayStyle
 
@@ -36,20 +46,22 @@ export function SongDetailContainer(props) {
         setpendingTrackInfo({
             album,
             artist,
-            trackID,
             trackName,
-            trackURI,
         })
     }
 
+    */
     return (
-        <div className={songDetailStyles.songDetailContailer} key={id}>
-            <div className={songDetailStyles.asctionButton} onClick={handleButtonAction} >
-                <div className={songDetailStyles.sign}>{button}</div>
+        <div className={styles.songDetailContailer} key={id}>
+            <div className={styles.asctionButton} >
+                <div className={styles.sign}> {icon} </div>
             </div>
             <h3>{trackName}</h3>
-            <p>by <span className={songDetailStyles.singer}> {artist} </span> in  <span className={songDetailStyles.album}>{album} </span></p>
-            <video key={id} controls={true} name="media" style={videoDisplayStyle} src={preview} sourcetype="audio/mpeg"></video>
+            <p>by <span className={styles.singer}> {artist} </span> in  <span className={styles.album}>{album} </span></p>
         </div>
     )
 }
+
+/*
+            <video key={key} controls={true} name="media" src={preview} sourcetype="audio/mpeg"></video>
+*/

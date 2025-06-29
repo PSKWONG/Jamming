@@ -4,7 +4,8 @@ import {React} from 'react';
 import PageWrapper from '../../component/Page/Page';
 import useSetPageBackground from './backgroundChanger';
 import useGetAccessToken from './getAccessToken';
-import { useGetSearchingResult } from '../Searching/getSearchingResult';
+import { useGetSearchingResult } from '../searching/getSearchingResult';
+import useLocalStorage from '../trackDisplay/storePlayList'
 
 
 //AppContainer is the main container of the App
@@ -14,7 +15,9 @@ const AppContainer = () => {
     //Check the state of the access token
     const { isPublicAccessToken, isPrivateAccessToken } = useGetAccessToken();
     //Searching Function 
-    const { searchResult, searchingControl } = useGetSearchingResult();
+    const [searchResult, searchingControl ] = useGetSearchingResult();
+    //Stored Play List 
+    const [storeTrack, storeActions] = useLocalStorage();
     
 
   
@@ -23,6 +26,7 @@ const AppContainer = () => {
     accessToken = {{ isPublicAccessToken, isPrivateAccessToken }}
     searchResult = {searchResult}
     searchingControl = {searchingControl}
+    storeActions = {storeActions}
   />;
 }   
 

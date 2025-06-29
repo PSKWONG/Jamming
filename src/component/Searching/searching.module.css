@@ -1,12 +1,13 @@
 
 .serchingContainer {
     background-color: rgba(255, 255, 255, 0.75);
+    box-sizing: border-box;
+    overflow: hidden;
     flex-basis: 100%;
     flex-grow: 1;
     padding: 25px;
     margin-top: 25px;
     border-radius: 25px;
-    margin-bottom: 10px;
 }
 
 .searchingTitle{
@@ -22,7 +23,7 @@
     margin: 0 auto;
     border: solid 2px black ;
     padding: 10px;
-    font-size: 1.25em;
+    
 }
 
 .searchingTextBox:focus{

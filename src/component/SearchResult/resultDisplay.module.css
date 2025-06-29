@@ -1,15 +1,23 @@
 
+/*----------- Result Display Container--------------  */
 .resultDisplayContainer {
-    background-color: rgba(107, 105, 105, 0.45);
+    background-color: rgba(207, 207, 207, 0.45);
     flex-basis: 100%;
     padding: 10px;
     border-radius: 10px;
-    height: 70dvh;
-    
+    max-height: 60vh; 
 }
 
+.resultDisplayContainer{
+    display:flex; 
+    flex-direction:row; 
+    flex-wrap:wrap; 
+}
+
+/* ------------ Song List Display ------------------------*/
+
 .resultListContainer {
-   height: calc(100% - 50px);
+    height: calc(100% - 50px);
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -21,11 +29,10 @@
 
 @media only screen and (min-width: 1100px )  {
     .resultDisplayContainer {
-        flex-basis: 55%;
+        flex-basis: 350px;
+        flex-grow: 3; 
         box-sizing: border-box;
         padding: 10px;
-        max-height: 60dvh;
-        height: 70dvh;
         
     }
   }

@@ -8,7 +8,7 @@ import { getAccessToken, extractAccessToken, checkAccessToken, getSearchresult, 
 import { AuthenComponent } from '../Authentication/authenComponent';
 import { HeaderComponent } from '../Header/headerComponent';
 import { SearchingContainer } from '../Searching/SearchingComponent';
-import { DisplayContainer } from '../DisplayContainer/DisplayContainer';
+import { SearchDisplay } from '../SearchResult/searchResult';
 import { UsertDisplayContainer } from '../UserListContainer/userDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
 
@@ -18,6 +18,10 @@ function Page(props) {
 
   //Variable to control components
   const {isPublicAccessToken} = props.accessToken;
+
+  const {searchResult} = props
+
+   
 
   //Get the private Access Token from the URL
   extractAccessToken();
@@ -160,17 +164,9 @@ function Page(props) {
       <div className = {AppStyle.ContentContainer}>
         <SystemMessage accessToken = {props.accessToken} />
         {isPublicAccessToken && <SearchingContainer searchingControl = {props.searchingControl} />}
-
-        <div className={AppStyle.AuthenticatorContainer}>
-        <AuthenComponent getAccessToken={getAccessToken} />
-      </div>
-      <div className={AppStyle.functionContainer}>
+        {searchResult.size !== 0 && <SearchDisplay searchResult = {searchResult} storeActions = {props.storeActions}  /> }
         
-        <DisplayContainer displayList={displayList} setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} />
-        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks}
-          setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />
-
-      </div>
+      
 
       </div>
     </div>
@@ -178,3 +174,14 @@ function Page(props) {
 }
 
 export default Page;
+
+/*
+<div className={AppStyle.functionContainer}>
+        
+        
+        <UsertDisplayContainer playlistName={playlistName} setPlaylistName={setPlaylistName} playlistTracks={playlistTracks}
+          setAction={setAction} setpendingTrackInfo={setpendingTrackInfo} handleExportBtn={handleExportBtn} />
+
+      </div>
+
+      */

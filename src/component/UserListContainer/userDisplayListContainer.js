@@ -1,5 +1,5 @@
 import userResultStyles from './userDisplayList.module.css'
-import { SongDetailContainer } from '../SongDetailContainer/songDetailContainer';
+import { SongDetail } from '../trackDetail/songDetail';
 
 export function UsertDisplayContainer(props) {
 
@@ -37,7 +37,7 @@ export function UsertDisplayContainer(props) {
                             },
                             button: "-"
                         };
-                        return <SongDetailContainer key={trackInfo.trackID} trackDetail={trackDetail} />
+                        return <SongDetail key={trackInfo.trackID} trackDetail={trackDetail} />
                     }
                     )
                 }
