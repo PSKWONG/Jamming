@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 
 const useLocalStorage =()=>{
 
     const [storeTrack, setStoreTrack] = useState(new Map());
+    const [listTitle, setListTitle] = useState('New Playlist'); 
 
     //Action with the store Play List 
     const handleAddTractToStore = (uri, trackData) => {
-        
+
         setStoreTrack(prev => {
             let updated = new Map(prev); 
             updated.set(uri, trackData);
@@ -40,17 +41,38 @@ const useLocalStorage =()=>{
 
     }
 
+    //Action to change Play List Title 
+    const handlePlayListTitle = (event)=>{
+        setListTitle(event.target.value); 
+    }
+
+    const resetPlayListTitle = ()=>{
+        setListTitle(''); 
+    }
+    
+    //Testing
+    useEffect(()=>{
+        /*
+        for (let [key, value] of storeTrack) {
+        console.log(`${key} => ${value}`);
+        }
+        */
+
+    },[storeTrack])
+
     //Actions as a bundle 
-    const storeActions = [
+    const storeActions = {
         handleAddTractToStore,
         handleRemoveTrackFromStore,
         handleClearStoreTrack,
         handleUploadToLocalStorage,
-        handleDownloadFromLocalStorage
-    ]
+        handleDownloadFromLocalStorage,
+        handlePlayListTitle,
+        resetPlayListTitle
+    }
 
 
-    return [storeTrack, storeActions];
+    return [storeTrack, storeActions, listTitle];
 }
 
 export default useLocalStorage;

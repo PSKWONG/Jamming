@@ -17,7 +17,7 @@ const AppContainer = () => {
     //Searching Function 
     const [searchResult, searchingControl ] = useGetSearchingResult();
     //Stored Play List 
-    const [storeTrack, storeActions] = useLocalStorage();
+    const [storeTrack, storeActions, listTitle] = useLocalStorage();
     
 
   
@@ -27,6 +27,8 @@ const AppContainer = () => {
     searchResult = {searchResult}
     searchingControl = {searchingControl}
     storeActions = {storeActions}
+    storeTrack={storeTrack}
+    listTitle = {listTitle}
   />;
 }   
 

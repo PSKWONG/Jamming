@@ -9,7 +9,7 @@ import { AuthenComponent } from '../Authentication/authenComponent';
 import { HeaderComponent } from '../header/HeaderComponent';
 import { SearchingContainer } from '../searching/SearchingComponent';
 import { SearchDisplay } from '../searching/SearchResult'
-import { UsertDisplayContainer } from '../UserListContainer/userDisplayListContainer';
+import { UsertDisplayContainer } from '../userListContainer/UserDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
 
 
@@ -165,7 +165,7 @@ function Page(props) {
         <SystemMessage accessToken = {props.accessToken} />
         {isPublicAccessToken && <SearchingContainer searchingControl = {props.searchingControl} />}
         {searchResult.size !== 0 && <SearchDisplay searchResult = {searchResult} storeActions = {props.storeActions}  /> }
-        
+        {searchResult.size !== 0 &&  <UsertDisplayContainer storeTrack={props.storeTrack} listTitle={props.listTitle} storeActions = {props.storeActions} />}
       
 
       </div>

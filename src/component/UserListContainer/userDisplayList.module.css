@@ -1,31 +1,41 @@
+/* userDisplayContainer */
 .userDisplayContainer {
-    background-color: rgba(107, 105, 105, 0.45);
-    flex-basis: 100%;
+    background-color: rgba(51, 51, 51, 0.8);
+    flex-basis: 100px;
+    flex-grow:1;
     padding: 10px;
     max-height: 60dvh;
     border-radius: 10px;
-    margin-top: 10px;
+    color: rgb(219, 219, 219); 
 
 }
 
-.userListContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    overflow-y: auto;
-    align-items: start;
-    align-content: start;
-    border-radius: 5px;
+.userDisplayContainer{
+    display: flex; 
+    flex-wrap: wrap; 
+    flex-direction:row; 
+    align-content: stretch; 
 }
 
+.userDisplayContainer h1 {
+    font-weight:200;
+    flex-basis: 100%;
+    
+}
+
+.inputWrapper{
+    flex-basis: 100%;
+}
+
+/* titleInput */
 .titleInput {
-    width: 100%;
     margin-bottom: 5px;
-    background-color: rgba(107, 105, 105, 0);
+    background-color: rgba(255, 255, 255, 0.3);
     border: 0px;
-    border-bottom: 1px solid black;
+    border-radius:5px;
     outline: none;
-    font-size: 1.5em;
+    font-size: 1.05em;
+    padding:5px;
     color: rgb(48, 48, 48);
     overflow: hidden;
 }
@@ -34,9 +44,24 @@
     color: white;
 }
 
+
+.userListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row; 
+    flex-basis:100%;
+    gap:5px;
+    overflow-y: auto;
+    align-items: start;
+    align-content: start;
+    border-radius: 5px;
+    max-height:45vh;
+}
+
+
+
 .exportButton {
-    width: 90%;
-    margin: 0 auto;
+    
     border: 1px solid #148F40;
     background-color: #1ED760;
     color: white;
@@ -45,6 +70,20 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    align-self:flex-end; 
+    flex-basis:100%;
+}
+
+.exportButton{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.exportButton img{
+    height:30px;
+    margin-left:10px;
 }
 
 .exportButton:hover {

@@ -9,8 +9,13 @@ export function SongDetail(props) {
 
     //Icon of button 
     const btnIcon = action[0] ==="add"? "+" : "-"; 
+
     //Action for button 
     const btnAction = action[1]; 
+    const handleBtnAction = (e)=>{
+        e.preventDefault(); 
+        btnAction(id, trackDetail); 
+    }
 
     //Conditional Content for preview 
     let previewContent; 
@@ -68,7 +73,7 @@ export function SongDetail(props) {
                 <p>by <span className={styles.singer}> {artist} </span> in  <span className={styles.album}>{album} </span></p>
                 {previewContent}
             </div>
-            <div className={styles.actionButton} onClick={btnAction} >
+            <div className={styles.actionButton} onClick={handleBtnAction} >
                 <div className={styles.sign}> {btnIcon} </div>
             </div>
         </div>
