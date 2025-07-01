@@ -1,4 +1,5 @@
 import { useState , useEffect} from 'react';
+import {getPrivateAccessToken} from '../../API/spotifyAPI'; 
 
 const useLocalStorage =()=>{
 
@@ -41,6 +42,21 @@ const useLocalStorage =()=>{
 
     }
 
+    const handleLoginService = (event)=>{
+        event.preventDefault(); 
+
+        //If the store Track contain saved track , upload to the local Storage
+        if( storeTrack.size !==0 ){
+            localStorage.setItem('storeTrack', JSON.stringify([...storeTrack]));
+        }
+
+        //Get the Private Access Token 
+        getPrivateAccessToken(); 
+    }
+
+
+    
+
     //Action to change Play List Title 
     const handlePlayListTitle = (event)=>{
         setListTitle(event.target.value); 
@@ -68,7 +84,8 @@ const useLocalStorage =()=>{
         handleUploadToLocalStorage,
         handleDownloadFromLocalStorage,
         handlePlayListTitle,
-        resetPlayListTitle
+        resetPlayListTitle,
+        handleLoginService
     }
 
 

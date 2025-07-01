@@ -13,7 +13,7 @@ const AppContainer = () => {
     //Use the custom hook to manage the state of the page
     useSetPageBackground();
     //Check the state of the access token
-    const { isPublicAccessToken, isPrivateAccessToken } = useGetAccessToken();
+    const { isPublicAccessToken, isPrivateAccessToken} = useGetAccessToken();
     //Searching Function 
     const [searchResult, searchingControl ] = useGetSearchingResult();
     //Stored Play List 

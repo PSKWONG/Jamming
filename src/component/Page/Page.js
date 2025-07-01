@@ -5,7 +5,6 @@ import AppStyle from './Page.module.css';
 
 import { getAccessToken, extractAccessToken, checkAccessToken, getSearchresult, exportPlaylist } from '../../API/Spotify';
 
-import { AuthenComponent } from '../Authentication/authenComponent';
 import { HeaderComponent } from '../header/HeaderComponent';
 import { SearchingContainer } from '../searching/SearchingComponent';
 import { SearchDisplay } from '../searching/SearchResult'
@@ -24,9 +23,9 @@ function Page(props) {
    
 
   //Get the private Access Token from the URL
-  extractAccessToken();
+  //extractAccessToken();
 
-  var r = document.querySelector(':root');
+  //var r = document.querySelector(':root');
   //Control the background of the APP ========================================================
   /*
   useEffect(() => {
@@ -54,7 +53,7 @@ function Page(props) {
   }, [r.style])
 */
   //Control the display of Components ========================================================
-
+  /*
   if (checkAccessToken()) {
     //Set the display property of the container 
     r.style.setProperty('--authenticatorState', 'none');
@@ -64,7 +63,7 @@ function Page(props) {
     r.style.setProperty('--authenticatorState', 'block');
     r.style.setProperty('--appContainerState', 'none');
   }
-
+*/
   //Song List to display ========================================================
   const [displayList, setDisplayList] = useState([])
 

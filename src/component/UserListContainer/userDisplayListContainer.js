@@ -7,7 +7,7 @@ import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.p
 
     //Variable 
     const listTitle = props.listTitle || 'New Playlist' ; 
-    const {handlePlayListTitle, resetPlayListTitle, handleRemoveTrackFromStore } = props.storeActions; 
+    const {handlePlayListTitle, resetPlayListTitle, handleRemoveTrackFromStore , handleLoginService} = props.storeActions; 
     const {storeTrack}= props;
 
     //Iterate the saved playlist
@@ -34,8 +34,8 @@ import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.p
             <div className={styles.userListContainer}>
                 {savedPlayList}
             </div>
-            <div className={styles.exportButton}  onClick={props.handleExportBtn} >
-                <span>Export to </span>
+            <div className={styles.exportButton}  onClick={handleLoginService} >
+                <span>Login to </span>
                 <img src={spotifyLogo} alt="Spotify Logo" />
             </div>
         </div>
