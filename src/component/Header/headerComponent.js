@@ -1,6 +1,7 @@
+import React from'react'; 
 import headerStyle from './Header.module.css'
 
-export function HeaderComponent () {
+function HeaderComponent () {
 
     return (
         <div className= {headerStyle.headerContainer}>
@@ -9,3 +10,5 @@ export function HeaderComponent () {
     );
 
 }
+
+export default HeaderComponent; 
