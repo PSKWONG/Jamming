@@ -4,12 +4,12 @@ import AppStyle from './Page.module.css';
 
 import { HeaderComponent } from '../header/HeaderComponent';
 import { SearchingContainer } from '../searching/SearchingComponent';
-import { UsertDisplayContainer } from '../userListContainer/UserDisplayListContainer';
+import { UsertDisplayContainer } from '../userListContainer/userDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
 
 
 
-function Page(props) {
+function PageWrapper(props) {
 
   //Variable to control components
   const {isPublicAccessToken} = props.accessToken;
@@ -42,6 +42,6 @@ function Page(props) {
   );
 }
 
-export default Page;
+export default PageWrapper;
 
 
