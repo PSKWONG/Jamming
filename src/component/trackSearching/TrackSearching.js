@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './searching.module.css';
-import { SongDetail } from '../trackDetail/SongDetail';
+import { SongDetail } from '../trackDetail/TrackDetail';
 
 export const SearchingContainer = React.memo((props) => {
 

@@ -1,6 +1,6 @@
 import React from'react';
 import styles from './trackStore.module.css'; 
-import { SongDetail } from '../trackDetail/SongDetail';
+import { SongDetail } from '../trackDetail/TrackDetail';
 import spotifyLogo from './image/Spotify-Logo-Download-Free.png';  
 
  const UsertDisplayContainer = React.memo((props)=>{
