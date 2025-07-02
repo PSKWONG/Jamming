@@ -1,7 +1,7 @@
 import React from'react'; 
 import headerStyle from './Header.module.css'
 
-function HeaderComponent () {
+function HeaderSection () {
 
     return (
         <div className= {headerStyle.headerContainer}>
@@ -11,4 +11,4 @@ function HeaderComponent () {
 
 }
 
-export default HeaderComponent; 
+export default HeaderSection; 

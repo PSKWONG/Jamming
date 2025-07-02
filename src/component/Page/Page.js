@@ -2,7 +2,7 @@
 import '../../style/Page.css';
 import AppStyle from './Page.module.css';
 
-import HeaderComponent from '../header/HeaderComponent';
+import HeaderSection from '../header/Header';
 import { SearchingContainer } from '../searching/SearchingComponent';
 import { UsertDisplayContainer } from '../userListContainer/userDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
@@ -17,7 +17,7 @@ function PageWrapper(props) {
 
   return (
     <div className={AppStyle.AppContainer}>
-      <HeaderComponent />
+      <HeaderSection />
       <div className = {AppStyle.ContentContainer}>
         <SystemMessage accessToken = {props.accessToken} />
 
