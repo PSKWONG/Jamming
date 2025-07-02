@@ -1,4 +1,4 @@
-import styles from './songDetail.module.css'
+import styles from './trackDetail.module.css';
 
 export function SongDetail(props) {
 
