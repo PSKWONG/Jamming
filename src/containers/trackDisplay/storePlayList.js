@@ -1,7 +1,7 @@
 import { useState , useEffect} from 'react';
-import {getPrivateAccessToken} from '../../API/spotifyAPI'; 
+import {getPrivateAccessToken, getUserInfo, createNewPlayList, addItemsToPlayList} from '../../API/spotifyAPI'; 
 
-const useLocalStorage =(token)=>{
+const useStoredPlayList =(token)=>{
 
     //Extract information from props
     const {isPrivateAccessToken} = token; 
@@ -9,6 +9,7 @@ const useLocalStorage =(token)=>{
     //Storage on states 
     const [storeTrack, setStoreTrack] = useState(new Map());
     const [listTitle, setListTitle] = useState('New Playlist'); 
+
 
     //Action with the store Play List 
     const handleAddTractToStore = (uri, trackData) => {
@@ -29,21 +30,17 @@ const useLocalStorage =(token)=>{
         });
     }
 
-    const handleClearStoreTrack = () => {
+    const clearStoreTrack = () => {
         setStoreTrack(new Map());
     }
 
-    const handleUploadToLocalStorage = () => {
-        localStorage.setItem('storeTrack', JSON.stringify([...storeTrack]));
-    }
 
-    const handleDownloadFromLocalStorage = ()=>{
+    const downloadFromLocalStorage = async()=>{
         const storedData = localStorage.getItem('storeTrack'); 
         if(storedData){
-            const parsed = JSON.parse(storedData); 
+            const parsed = await JSON.parse(storedData); 
             setStoreTrack(new Map(parsed)); 
         }
-
     }
 
     const handleLoginService = (event)=>{
@@ -56,6 +53,43 @@ const useLocalStorage =(token)=>{
         //Get the Private Access Token 
         getPrivateAccessToken(); 
     }
+    
+    const exportNewPlayList = async(title, trackList)=>{
+        const userInfo = await getUserInfo();
+        const newListID = await createNewPlayList(title, userInfo); 
+        const response = await addItemsToPlayList(newListID,trackList ); 
+
+        if(response){
+           clearStoreTrack(); 
+           localStorage.removeItem('storeTrack');
+        }
+        
+
+    }
+
+
+    const handleExportButton = (event)=>{
+        event.preventDefault(); 
+
+        //Checking the input is ready
+        if (!listTitle.trim()){
+            alert("Please check the title of stored play list"); 
+            return; 
+        }
+
+        if(storeTrack.size === 0 ){
+            alert("Please add track to the play list"); 
+            return; 
+        }
+
+        const title = listTitle.trim(); 
+        const trackList = [...storeTrack.keys()]; 
+
+        exportNewPlayList(title,trackList ); 
+
+    }
+
+    
 
 
     
@@ -73,7 +107,11 @@ const useLocalStorage =(token)=>{
     const playListControl ={
         button:{
             instruction: isPrivateAccessToken ? "Save to" : "Login to",
-            action: isPrivateAccessToken? handleLoginService : handleLoginService
+            action: isPrivateAccessToken? handleExportButton : handleLoginService
+        },
+        listTitle:{
+            title: listTitle, 
+            action: {handlePlayListTitle,resetPlayListTitle}
         }
     }
     
@@ -87,20 +125,21 @@ const useLocalStorage =(token)=>{
 
     },[storeTrack])
 
+    // Load Saved Play List 
+    useEffect(()=>{
+        downloadFromLocalStorage(); 
+    },[]);
+
     //Actions as a bundle 
     const storeActions = {
         handleAddTractToStore,
         handleRemoveTrackFromStore,
-        handleClearStoreTrack,
-        handleUploadToLocalStorage,
-        handleDownloadFromLocalStorage,
-        handlePlayListTitle,
-        resetPlayListTitle,
-        handleLoginService
+        
+        downloadFromLocalStorage,
     }
 
 
-    return {storeTrack, storeActions, listTitle, playListControl};
+    return {storeTrack, storeActions, playListControl};
 }
 
-export default useLocalStorage;
+export default useStoredPlayList;

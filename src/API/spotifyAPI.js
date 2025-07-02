@@ -6,7 +6,6 @@ var publicAccessToken = null;
 var privateAccessToken = null;
 
 let feedbackParams; 
-var accessToken = null;
 
 //Variables to hold backend information 
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID; 
@@ -14,7 +13,7 @@ const clientSecret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
 const redirectUri = process.env.REACT_APP_ENVIRONMENT === "development"? "http://localhost:3000" : "https://emusicjamming.netlify.app/";
 
 
-//Helper function
+// Checking Function  =======================================================================
 const checkAccessToken = () => {
     console.log('check the status' + publicAccessToken )
     return {
@@ -41,7 +40,7 @@ const checkIsFeedback = ()=>{
     }
 }
 
-    
+// Access Token   =======================================================================
 
 const getAccessToken = async () =>{
     if ( publicAccessToken && privateAccessToken){
@@ -87,6 +86,9 @@ const getPublicAccessToken = async () => {
 
 //Function to get private access token
 const getPrivateAccessToken = async ()=>{
+    if(privateAccessToken){
+        return privateAccessToken; 
+    }
 
     //Parameter to pass for authentication
     var scope = 'playlist-modify-public playlist-modify-private';
@@ -151,6 +153,122 @@ const getSearchResult = async(inputValue)=>{
 
 }
 
+// Exporting Play List Function  =======================================================================
+
+const getUserInfo = async()=>{
+
+    if(!privateAccessToken){
+        console.log("When get user Information" + privateAccessToken)
+        throw(new Error("Spotify Service is not avaliable before login"))
+    }
+
+    const url = "https://api.spotify.com/v1/me"; 
+    const headerComponent = {
+        "Authorization": "Bearer " + privateAccessToken
+    }
+
+    //Get User Info
+    try{
+        const response = await axios.get(url, {
+            headers: headerComponent
+        }); 
+        //checking 
+        return response.data; 
+
+    }catch(error){
+        console.log("Fail to retrieve user information from Spotify"); 
+        throw(error); 
+    }
+}
+
+const createNewPlayList = async (title, userInfo)=>{
+
+    //Fetch Data 
+    const userID =userInfo.id;
+    const name = userInfo.display_name; 
+
+    const url = `https://api.spotify.com/v1/users/${userID}/playlists`; 
+
+    const accessToken = await getPrivateAccessToken(); 
+
+  
+
+    const headerComponent = {
+        "Authorization": "Bearer " + accessToken,
+        "Content-Type": "application/json"
+    }; 
+    const bodyContent = JSON.stringify({
+        "name": `${title}`,
+        "description": `${name} generated playlist`,
+        "public": false
+    });
+
+    //Try to Fetch Data from Spotify Server for new Play List ID 
+
+    try{
+
+        console.log('Try to get the new playlist ID from Spotify - start ')
+
+        const response = await fetch(url, {
+            "method": "POST",
+            "headers": headerComponent,
+            "body": bodyContent
+        })
+
+        console.log('Try to destruct the response ')
+
+        const playListData = await response.json()
+
+        const playListID = playListData.id
+
+        return playListID; 
+
+    }catch(error){
+        console.log("Fail to get the Playlist ID from Spotify"); 
+        throw(error); 
+    }
+
+
+
+
+}
+
+const addItemsToPlayList = async(listID, trackList)=>{
+
+    //Fetch Data 
+    const url =  `https://api.spotify.com/v1/playlists/${listID}/tracks`; 
+    const accessToken = await getPrivateAccessToken(); 
+
+      console.log('accessToken from Adding Items', accessToken); 
+
+    const headerComponent = {
+        "Authorization": "Bearer " + accessToken,
+        "Content-Type": "application/json"
+    }; 
+    const bodyContent = JSON.stringify(
+        {
+        "uris" : trackList,
+        "position": 0
+        }
+    )
+
+    try{
+        
+        const response = await fetch(url, {
+                                    "method" : "POST",
+                                    "headers" : headerComponent,
+                                    "body" : bodyContent
+                                })
+
+        return response !== null ; 
+
+    }catch(error){
+        console.log("Fail to add items to Play List" + error); 
+        throw(error); 
+    }
+
+}
+
 
 
 
@@ -159,7 +277,10 @@ export {
     getPublicAccessToken, 
     getPrivateAccessToken, 
     getAccessToken,
+    getUserInfo,
     checkAccessToken, 
     extractPrivateToken, 
-    getSearchResult 
+    getSearchResult,
+    createNewPlayList,
+    addItemsToPlayList
 };

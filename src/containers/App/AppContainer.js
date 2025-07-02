@@ -5,7 +5,7 @@ import PageWrapper from '../../component/page/Page';
 import useSetPageBackground from './backgroundChanger';
 import useGetAccessToken from './getAccessToken';
 import { useGetSearchingResult } from '../searching/getSearchingResult';
-import useLocalStorage from '../trackDisplay/storePlayList'
+import useStoredPlayList from '../trackDisplay/storePlayList'
 
 
 //AppContainer is the main container of the App
@@ -17,7 +17,7 @@ const AppContainer = () => {
     //Searching Function 
     const [searchResult, searchingControl ] = useGetSearchingResult();
     //Stored Play List 
-    const {storeTrack, storeActions, listTitle} = useLocalStorage(token);
+    const {storeTrack, storeActions, playListControl} = useStoredPlayList(token);
     
 
   
@@ -28,7 +28,7 @@ const AppContainer = () => {
     searchingControl = {searchingControl}
     storeActions = {storeActions}
     storeTrack={storeTrack}
-    listTitle = {listTitle}
+    playListControl = {playListControl}
   />;
 }   
 

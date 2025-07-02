@@ -6,9 +6,19 @@ import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.p
  const UsertDisplayContainer = React.memo((props)=>{
 
     //Variable 
-    const listTitle = props.listTitle; 
-    const {handlePlayListTitle, resetPlayListTitle, handleRemoveTrackFromStore , handleLoginService} = props.storeActions; 
+    //Title Control 
+    const listTitle= props.playListControl.listTitle.title; 
+    const {handlePlayListTitle,resetPlayListTitle} = props.playListControl.listTitle.action;
+
+    //List Button Control 
+    const {instruction} = props.playListControl.button; 
+    const buttonAction = props.playListControl.button.action; 
+
+    //Store List Control 
+    const {handleRemoveTrackFromStore} = props.storeActions; 
     const {storeTrack}= props;
+
+
 
     //Iterate the saved playlist
     let savedPlayList; 
@@ -35,8 +45,8 @@ import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.p
                 {savedPlayList}
             </div>
             
-            <div className={styles.exportButton}  onClick={handleLoginService} >
-                <span>Login to </span>
+            <div className={styles.exportButton}  onClick={buttonAction} >
+                <span>{instruction} </span>
                 <img src={spotifyLogo} alt="Spotify Logo" />
             </div>
         </div>

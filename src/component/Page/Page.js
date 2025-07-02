@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
 
 import '../../style/Page.css';
 import AppStyle from './Page.module.css';
 
 import { HeaderComponent } from '../header/HeaderComponent';
 import { SearchingContainer } from '../searching/SearchingComponent';
-import { SearchDisplay } from '../searching/SearchResult'
 import { UsertDisplayContainer } from '../userListContainer/UserDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
 
@@ -34,7 +32,7 @@ function Page(props) {
         {isPublicAccessToken &&  
           <UsertDisplayContainer 
           storeTrack={props.storeTrack} 
-          listTitle={props.listTitle} 
+          playListControl={props.playListControl} 
           storeActions = {props.storeActions} 
           />
         }
