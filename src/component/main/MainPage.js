@@ -1,10 +1,10 @@
 
 import '../../style/Page.css';
-import AppStyle from './Page.module.css';
+import styles from './home.module.css'; 
 
-import HeaderSection from '../Header/Header';
-import { SearchingContainer } from '../searching/SearchingComponent';
-import { UsertDisplayContainer } from '../userListContainer/userDisplayListContainer';
+import HeaderSection from '../top/TopComponent';
+import { SearchingContainer } from '../trackSearching/TrackSearching'; 
+import { UsertDisplayContainer } from '../trackStore/TrackStore';
 import SystemMessage from '../systemMessage/SystemMessage';
 
 
@@ -16,9 +16,9 @@ function PageWrapper(props) {
   const {searchResult} = props
 
   return (
-    <div className={AppStyle.AppContainer}>
+    <div className={styles.AppContainer}>
       <HeaderSection />
-      <div className = {AppStyle.ContentContainer}>
+      <div className = {styles.ContentContainer}>
         <SystemMessage accessToken = {props.accessToken} />
 
         {isPublicAccessToken && 

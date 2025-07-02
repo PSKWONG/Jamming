@@ -1,4 +1,4 @@
-import styles from './SongDetail.module.css'
+import styles from './songDetail.module.css'
 
 export function SongDetail(props) {
 
@@ -25,47 +25,7 @@ export function SongDetail(props) {
         previewContent = <></>
     }
 
-/*
-    try{
-        var {trackInfo} = props.trackDetail; 
-    }catch(error){
-        return <></>
-    }
 
-    
-    const {action} = props.trackDetail; 
-    const {setAction, setpendingTrackInfo} =action; 
-    const {button} = props.trackDetail;
-    //const {preview, album, artist, trackID, trackName , trackURI , id  } = trackInfo;
-
-    let videoDisplayStyle
-
-    if (button === "+" && preview) {
-
-        videoDisplayStyle = {
-            display: 'block'
-        }
-    } else {
-        videoDisplayStyle = {
-            display: 'none'
-        }
-    }
-
-    // Control the Button Action 
-    function handleButtonAction() {
-        if (button === "+") {
-            setAction('Add')
-        } else {
-            setAction('Remove')
-        }
-        setpendingTrackInfo({
-            album,
-            artist,
-            trackName,
-        })
-    }
-
-    */
     return (
         <div className={styles.songDetailWrapper} key={id}>
             <div className = {styles.songDetailContailer}>
@@ -79,7 +39,3 @@ export function SongDetail(props) {
         </div>
     )
 }
-
-/*
-            <video key={key} controls={true} name="media" src={preview} sourcetype="audio/mpeg"></video>
-*/

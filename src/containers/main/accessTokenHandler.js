@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-    getPublicAccessToken, 
-    getPrivateAccessToken as fetchPrivateAccessToken,
-    getAccessToken,
-    checkAccessToken
-} from '../../API/spotifyAPI';
+import { getAccessToken, checkAccessToken } from  '../../api/spotifyAPIHandler'; 
 
 const useGetAccessToken = ()=>{
 

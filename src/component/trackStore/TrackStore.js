@@ -1,7 +1,7 @@
 import React from'react';
-import styles from './userDisplayList.module.css'
-import { SongDetail } from '../trackDetail/songDetail';
-import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.png'; 
+import styles from './trackStore.module.css'; 
+import { SongDetail } from '../trackDetail/SongDetail';
+import spotifyLogo from './image/Spotify-Logo-Download-Free.png';  
 
  const UsertDisplayContainer = React.memo((props)=>{
 

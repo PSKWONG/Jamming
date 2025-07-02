@@ -1,10 +1,10 @@
 import React from'react'; 
-import headerStyle from './Header.module.css'
+import styles from './top.module.css';
 
 function HeaderSection () {
 
     return (
-        <div className= {headerStyle.headerContainer}>
+        <div className= {styles.headerContainer}>
             <h1> Jamming </h1>
         </div>
     );

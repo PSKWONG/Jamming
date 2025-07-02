@@ -1,5 +1,5 @@
 import { useState , useEffect} from 'react';
-import {getPrivateAccessToken, getUserInfo, createNewPlayList, addItemsToPlayList} from '../../API/spotifyAPI'; 
+import {getPrivateAccessToken, getUserInfo, createNewPlayList, addItemsToPlayList} from '../../api/spotifyAPIHandler'; 
 
 const useStoredPlayList =(token)=>{
 

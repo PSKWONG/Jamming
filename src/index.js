@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style/index.css';
 //import App from './component/App/App';
-import AppContainer from './containers/App/AppContainer';
+import AppContainer from './containers/main/mainContainer'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

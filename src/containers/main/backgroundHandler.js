@@ -1,10 +1,10 @@
 import {useState, useEffect} from 'react';
 
 //Import background Image 
-import pinkBackground from '../../component/Page/images/pink_background.jpg'
-import greenBackground from '../../component/Page/images/green_background.webp';
-import redBackground from '../../component/Page/images/red_background.jpg';         
-import yellowBackground from '../../component/Page/images/yellow_background.webp';
+import pinkBackground from '../../component/main/images/pink_background.jpg'
+import greenBackground from '../../component/main/images/green_background.webp';
+import redBackground from '../../component/main/images/red_background.jpg';         
+import yellowBackground from '../../component/main/images/yellow_background.webp';
 
 
 // PageState is a custom hook that manages the state of the page

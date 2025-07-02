@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {getSearchResult} from '../../API/spotifyAPI';
+import {getSearchResult} from '../../api/spotifyAPIHandler';
 
 
 

@@ -1,10 +1,10 @@
-import {React} from 'react';
+import React from 'react';
 
 //Import Components
-import PageWrapper from '../../component/Page/Page';
-import useSetPageBackground from './backgroundChanger';
-import useGetAccessToken from './getAccessToken';
-import { useGetSearchingResult } from '../Searching/getSearchingResult'; 
+import PageWrapper from '../../component/main/MainPage'; 
+import useSetPageBackground from './backgroundHandler'; 
+import useGetAccessToken from './accessTokenHandler';
+import { useGetSearchingResult } from '../searching/getSearching';
 import useStoredPlayList from '../trackDisplay/storePlayList'
 
 
