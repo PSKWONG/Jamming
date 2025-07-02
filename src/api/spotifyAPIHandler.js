@@ -239,8 +239,6 @@ const addItemsToPlayList = async(listID, trackList)=>{
     const url =  `https://api.spotify.com/v1/playlists/${listID}/tracks`; 
     const accessToken = await getPrivateAccessToken(); 
 
-      console.log('accessToken from Adding Items', accessToken); 
-
     const headerComponent = {
         "Authorization": "Bearer " + accessToken,
         "Content-Type": "application/json"
