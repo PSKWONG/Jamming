@@ -2,7 +2,7 @@
 import '../../style/Page.css';
 import AppStyle from './Page.module.css';
 
-import HeaderSection from '../header/Header';
+import HeaderSection from '../Header/Header';
 import { SearchingContainer } from '../searching/SearchingComponent';
 import { UsertDisplayContainer } from '../userListContainer/userDisplayListContainer';
 import SystemMessage from '../systemMessage/SystemMessage';
