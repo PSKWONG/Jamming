@@ -1,51 +1,155 @@
 
-.serchingContainer {
+.serchingWrapper {
     background-color: rgba(255, 255, 255, 0.75);
     box-sizing: border-box;
-    overflow: hidden;
-    flex-basis: 100%;
-    flex-grow: 1;
+    flex-basis: 250px;
+    flex-grow: 3;
     padding: 25px;
-    margin-top: 25px;
     border-radius: 25px;
 }
 
-.searchingTitle{
+.serchingWrapper{
+    display:flex;
+    flex-direction:column; 
+    gap:15px;
+
+}
+
+.serchingContainer{
+    flex-grow: 2;
+}
+
+
+.serchingContainer{
+    display: flex; 
+    flex-direction:row; 
+    flex-wrap:wrap;
+    align-content:start;
+    gap:5px;
+}
+
+/*  Title */
+.serchingContainer h1{
+    flex-basis:100%;
     font-size: 3em;
     color: rgb(51, 51, 51);
     font-weight: 900;
     text-align: center;
 }
 
-.searchingTextBox{
-    min-width: 90%;
-    display: block;
-    margin: 0 auto;
-    border: solid 2px black ;
-    padding: 10px;
-    
+
+/*Searching Form */
+.serchingContainer form{
+    flex-basis:100%; 
 }
 
-.searchingTextBox:focus{
+.serchingContainer form{
+    display:flex; 
+    flex-wrap:wrap;
+}
+
+.serchingContainer form input{
+    flex-basis: 150px;
+    flex-grow:5;
+    border: solid 2px black ;
+    padding: 10px;
+    box-sizing:border-box; 
+}
+
+.serchingContainer form input:focus{
     color: black;
 }
-.searchingTextBox:not(:focus){
+
+.serchingContainer form input:not(:focus){
     color: grey;
 }
 
-.searchingbutton {
-    display: block;
-    width: 250px;
-    background-color: whitesmoke;
-    color: black;
-    padding: 15px;
-    border-radius: 15px;
-    margin: 0 auto;
-    font-size: 1.1em;
-    font-weight: 500;
+.serchingContainer form button{
+    background-color:rgba(0,0,0,0); 
+    background-image:url('./image/search_icon.png'); 
+    background-repeat:no-repeat;
+    background-position:center;
+    flex-basis:30px;
+    border:0px;
     cursor: pointer;
+    
 }
-.searchingbutton:hover{
-    background-color: grey;
-    color: white;
+
+
+/*----------- Result Display Container--------------  */
+.resultDisplayContainer {
+    background-color: rgba(207, 207, 207, 0.45);
+    flex-basis: 150px;
+    flex-grow:6;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.resultDisplayContainer{
+    display:flex; 
+    flex-direction:row; 
+    flex-wrap:wrap; 
+}
+
+.resultDisplayContainer h2{
+    flex-basis:100%;
+    /*
+    font-size: 3em;
+    color: rgb(51, 51, 51);
+    font-weight: 900;
+    text-align: center;
+    */
+}
+
+/* ------------ Song List Display ------------------------*/
+
+.resultListContainer {
+    flex-basis:150px;
+    flex-grow:5;
+    overflow-y: auto;
+    border-radius: 5px;
+    min-height:150px;
+}
+
+.resultListContainer{
+    display: flex;
+    flex-flow:row; 
+    flex-wrap:wrap;
+    gap: 5px;
+    align-content: start;
+}
+
+@media only screen and (max-width: 1100px )  {
+    
+
+    .resultListContainer{
+        max-height:25vh;
+    }
+}
+
+
+@media only screen and (min-width: 1100px )  {
+    .serchingWrapper{
+        flex-direction:row; 
+
+    }
+
+    .serchingContainer{
+        flex-basis: 150px;
+    }
+        
+    .resultDisplayContainer {
+        flex-direction:column; 
+        align-self:stretch;
+    }
+
+    .resultDisplayContainer h2{
+        flex-basis:15px;
+        flex-grow:0;
+    }
+
+    .resultListContainer{
+        flex-basis:150px;
+        flex-grow:1;
+    }
 }

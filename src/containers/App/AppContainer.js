@@ -13,17 +13,17 @@ const AppContainer = () => {
     //Use the custom hook to manage the state of the page
     useSetPageBackground();
     //Check the state of the access token
-    const { isPublicAccessToken, isPrivateAccessToken} = useGetAccessToken();
+    const token = useGetAccessToken();
     //Searching Function 
     const [searchResult, searchingControl ] = useGetSearchingResult();
     //Stored Play List 
-    const [storeTrack, storeActions, listTitle] = useLocalStorage();
+    const {storeTrack, storeActions, listTitle} = useLocalStorage(token);
     
 
   
 
   return <PageWrapper 
-    accessToken = {{ isPublicAccessToken, isPrivateAccessToken }}
+    accessToken = {token}
     searchResult = {searchResult}
     searchingControl = {searchingControl}
     storeActions = {storeActions}

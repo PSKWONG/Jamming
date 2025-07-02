@@ -1,8 +1,12 @@
 import { useState , useEffect} from 'react';
 import {getPrivateAccessToken} from '../../API/spotifyAPI'; 
 
-const useLocalStorage =()=>{
+const useLocalStorage =(token)=>{
 
+    //Extract information from props
+    const {isPrivateAccessToken} = token; 
+
+    //Storage on states 
     const [storeTrack, setStoreTrack] = useState(new Map());
     const [listTitle, setListTitle] = useState('New Playlist'); 
 
@@ -49,7 +53,6 @@ const useLocalStorage =()=>{
         if( storeTrack.size !==0 ){
             localStorage.setItem('storeTrack', JSON.stringify([...storeTrack]));
         }
-
         //Get the Private Access Token 
         getPrivateAccessToken(); 
     }
@@ -64,6 +67,14 @@ const useLocalStorage =()=>{
 
     const resetPlayListTitle = ()=>{
         setListTitle(''); 
+    }
+
+    //Play List Control 
+    const playListControl ={
+        button:{
+            instruction: isPrivateAccessToken ? "Save to" : "Login to",
+            action: isPrivateAccessToken? handleLoginService : handleLoginService
+        }
     }
     
     //Testing
@@ -89,7 +100,7 @@ const useLocalStorage =()=>{
     }
 
 
-    return [storeTrack, storeActions, listTitle];
+    return {storeTrack, storeActions, listTitle, playListControl};
 }
 
 export default useLocalStorage;

@@ -43,7 +43,17 @@ const useGetSearchingResult = ()=>{
             //Return the Array as a Map 
             return store;
         }
+        //Prevent Default Button Actions 
         event.preventDefault();
+
+        console.log("Input value: " + inputValue);
+
+        //Checking the input 
+        if(!inputValue.trim()){
+            alert('Please input keyword in searching');
+            return;
+        }
+
         try {
             const searchResult = await getSearchResult(inputValue);
             setSearchResult(storeSearchResult(searchResult));

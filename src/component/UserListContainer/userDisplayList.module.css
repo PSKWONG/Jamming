@@ -4,17 +4,19 @@
     flex-basis: 100px;
     flex-grow:1;
     padding: 10px;
-    max-height: 60dvh;
     border-radius: 10px;
     color: rgb(219, 219, 219); 
+    border-radius: 10px;
+
 
 }
 
 .userDisplayContainer{
     display: flex; 
-    flex-wrap: wrap; 
-    flex-direction:row; 
-    align-content: stretch; 
+    flex-wrap:nowrap; 
+    flex-direction:column; 
+    justify-content:space-between;
+    gap:10px;
 }
 
 .userDisplayContainer h1 {
@@ -24,7 +26,8 @@
 }
 
 .inputWrapper{
-    flex-basis: 100%;
+    flex-grow:0; 
+    justify-self:start;
 }
 
 /* titleInput */
@@ -46,16 +49,22 @@
 
 
 .userListContainer {
+    flex-basis:150px;
+    flex-grow:1;
+    overflow-y: auto;
+    
+    border-radius: 5px;
+}
+.userListContainer{
     display: flex;
     flex-wrap: wrap;
-    flex-direction:row; 
-    flex-basis:100%;
+    flex-direction:row;
     gap:5px;
-    overflow-y: auto;
     align-items: start;
     align-content: start;
-    border-radius: 5px;
-    max-height:45vh;
+
+
+
 }
 
 
@@ -70,15 +79,15 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    align-self:flex-end; 
-    flex-basis:100%;
+    box-sizing:border-box;
+    flex-basis:50px;
+    flex-grow:0;
 }
 
 .exportButton{
     display:flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .exportButton img{
@@ -93,10 +102,6 @@
 
 @media only screen and (min-width: 1100px) {
     .userDisplayContainer {
-        flex-basis: 35%;
-        padding: 10px;
-        max-height: 60dvh;
-        border-radius: 10px;
 
     }
 }

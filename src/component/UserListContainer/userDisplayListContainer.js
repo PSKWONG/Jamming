@@ -6,7 +6,7 @@ import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.p
  const UsertDisplayContainer = React.memo((props)=>{
 
     //Variable 
-    const listTitle = props.listTitle || 'New Playlist' ; 
+    const listTitle = props.listTitle; 
     const {handlePlayListTitle, resetPlayListTitle, handleRemoveTrackFromStore , handleLoginService} = props.storeActions; 
     const {storeTrack}= props;
 
@@ -27,13 +27,14 @@ import spotifyLogo from '../userListContainer/image/Spotify-Logo-Download-Free.p
             
             <div className={styles.inputWrapper}>
                 <h1>Saved Playlist</h1>
-                <span>Rename playlist as </span>
+                <span>rename as </span>
                 <input type='text' className={styles.titleInput} value={listTitle} onChange={handlePlayListTitle} onClick={resetPlayListTitle} ></input>
             </div>
 
             <div className={styles.userListContainer}>
                 {savedPlayList}
             </div>
+            
             <div className={styles.exportButton}  onClick={handleLoginService} >
                 <span>Login to </span>
                 <img src={spotifyLogo} alt="Spotify Logo" />
