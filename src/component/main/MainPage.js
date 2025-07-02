@@ -12,7 +12,7 @@ import SystemMessage from '../systemMessage/SystemMessage';
 function PageWrapper(props) {
 
   //Variable to control components
-  const {isPublicAccessToken} = props.accessToken;
+  const {isPublicAccessToken, isPrivateAccessToken} = props.accessToken;
   const {searchResult} = props
 
   return (
@@ -21,7 +21,7 @@ function PageWrapper(props) {
       <div className = {styles.ContentContainer}>
         <SystemMessage accessToken = {props.accessToken} />
 
-        {isPublicAccessToken && 
+        { (isPublicAccessToken || isPrivateAccessToken ) && 
           <SearchingContainer 
             searchingControl = {props.searchingControl} 
             searchResult = {searchResult} 
@@ -29,7 +29,7 @@ function PageWrapper(props) {
           />
         }
         
-        {isPublicAccessToken &&  
+        {(isPublicAccessToken || isPrivateAccessToken ) &&  
           <UsertDisplayContainer 
           storeTrack={props.storeTrack} 
           playListControl={props.playListControl} 

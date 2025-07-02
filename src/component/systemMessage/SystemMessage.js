@@ -6,23 +6,28 @@ function SystemMessage(props) {
 
     let displayContent; 
 
-    const {isPublicAccessToken} = props.accessToken;
+    const {isPublicAccessToken,isPrivateAccessToken} = props.accessToken;
 
-    //let isPublicAccessToken = null // Testing purpose
+    switch(true){
 
-    if(isPublicAccessToken === null){
-        displayContent = 
+        case (isPublicAccessToken === true || isPrivateAccessToken === true ) :
+            displayContent = <></>;
+            break;
+        
+        case (isPublicAccessToken === false || isPrivateAccessToken ===false):
+            displayContent = 
+            <div className = {`${styles.messageContainer} ${styles.errorMessage}`}>
+                <span>Failed to retrieve Spotify Services. Please try again later.</span>
+            </div>;
+            break; 
+
+        default:
+            displayContent = 
             <div className = {`${styles.messageContainer} ${styles.loadingMessage}`}>
                 <span>Loading...</span>
             </div>;
-    }else if(isPublicAccessToken === false){
-        displayContent = 
-        <div className = {`${styles.messageContainer} ${styles.errorMessage}`}>
-            <span>Failed to retrieve Spotify Services. Please try again later.</span>
-        </div>;
-    }else{
-        displayContent = <></>;
     }
+
 
     return(
         <>
