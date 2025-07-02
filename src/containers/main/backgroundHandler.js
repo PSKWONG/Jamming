@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useMemo} from 'react';
 
 //Import background Image 
 import pinkBackground from '../../component/main/images/pink_background.jpg'
@@ -9,13 +9,15 @@ import yellowBackground from '../../component/main/images/yellow_background.webp
 
 // PageState is a custom hook that manages the state of the page
 const useSetPageBackground = ()=>{
-    //Array of background images
-    const backgroundImages = [
+    
+    //Array of background images (memoized)
+    const backgroundImages = useMemo(() => [
         yellowBackground,
         pinkBackground,
         greenBackground,
         redBackground
-    ];
+    ], []);
+
     //State for the display list
     const [background, setBackground] = useState(backgroundImages[0]);
 
@@ -28,7 +30,7 @@ const useSetPageBackground = ()=>{
         //Set the background state to the random number
         setBackground(backgroundImages[randomNum]);
 
-    },[]);
+    },[backgroundImages]);
 
     useEffect(() => {
        
